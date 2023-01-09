@@ -1,0 +1,2 @@
+This script was created in an Educational Labratory Setting to tile a set of 3D points given in slices for a wide variety of applications.  The labs shell 
+code was provided by the course and the lab was completed by William Quigley and Lucas Krayacich

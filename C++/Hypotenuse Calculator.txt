@@ -1,0 +1,27 @@
+//This is code to calculate the hypotenuse of a right angle triangle.  It was developed by William Quigley as a C++ Demo for the Queens Biomechatronics Team.
+#include <iostream>
+#include <cmath>
+
+double hypCalc(int A, int B){
+    double hypo = 0;
+    hypo = sqrt(A*A + B*B);
+    return hypo;
+}
+
+int main() {
+    int sideOne, sideTwo = 1;
+    double hyp = 0;
+    
+    // Write C++ code here
+    std::cout << "Hello world!" << std::endl;
+    while (sideOne != 0 && sideTwo != 0){
+        std::cout << "Enter your first side: " << std::endl;
+        std::cin >> sideOne;
+        std::cout << "Enter your second side: " << std::endl;
+        std::cin >> sideTwo;
+        hyp = hypCalc(sideOne, sideTwo);
+        std::cout << "The hypotenuse is of length " << hyp << std::endl;
+    }
+    std::cout << "Goodbye!";
+    return 0;
+}

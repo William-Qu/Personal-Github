@@ -1,0 +1,1230 @@
+'''This is the code of a game that I made.  It was coded in PyGame, an extension to Python'''
+
+import pygame
+import random
+
+''' ---------- Variables Bellow ---------- '''
+# Define some colors
+YELLOW = (165, 105, 225)
+DARKYELLOW = (255, 250, 150)
+
+BLACK = (0, 0, 0)
+WHITE = (255, 255, 255)
+
+GREEN = (50, 255, 50)
+DARKGREEN = (2, 114, 7)
+
+RED = (255, 0, 0)
+PINK = (255, 0, 150)
+ORANGE = (255,155,0)
+
+BLUE = (0, 0, 255)
+DARKBLUE = (0, 0, 150)
+LIGHTBLUE = (150,150,255)
+SKYBLUE = (10,10,255)
+PURPLE = (204, 0, 204)
+
+BROWN = (115,75,0)
+DARKBROWN = (80,40,0)
+
+GREY = (55,55,40)
+DARKGREY = (45,45,30)
+LIGHTGREY = (85,85,70)
+SKYGREY = (142,142,142)
+
+color_r_block = 0
+color_g_block = 0
+color_b_block = 0
+color_block_total = (color_r_block, color_g_block, color_b_block)
+#Background Cycle Variables Bellow
+color_sky_r = 155
+color_sky_g = 155
+color_sky_b = 155
+color_sky = (color_sky_r, color_sky_g, color_sky_b)
+
+#Queen Death Animation Variables
+queen_death_animation_counter = 0
+queen_death_animation = False
+queen_explosion_movement = 0
+queen_ellipse_radius = 0
+
+#Start Screen Variables
+first_time_startup = True
+text_startup_one = True
+text_startup_two = False
+text_startup_three = False
+text_startup_four = False
+startup_counter = 0
+
+#Other Variables Bellow
+round_number = 1
+frame = 0
+enemies = 0
+fire_frames = 0
+fire_time = 0
+lives = 5
+powerup = 200
+powerup_active = False
+powerup_active_one = False
+powerup_frames = 0
+powerup_one = 10
+LEFT = 1
+MIDDLE = 2
+RIGHT = 3
+enemy_type = []
+queen_bullet_wave = 0
+queen_is_alive = True
+bitch_tiddies = False
+please_continue_reseting = False
+please_continue_reseting_counter = 0
+thickness = 1
+thickness_check = False
+thickness_counter = 0
+line_thickness = 0
+thickness_has_been_checked = False
+color_r_player = 255
+color_g_player = 255
+color_b_player = 255
+
+
+#Start Screen and Reset Screen Variables Bellow
+first = True
+round_reset = False
+reset_screen_frames = 0
+please_respawn = False
+restart_check = False
+restart_frames = 0
+round_win_check = True
+quit_time_left = 0
+please_clear_the_screen_sir = False
+enemies_are_alive = True
+already_checked = False
+
+#Boss Round Varaibles
+final_round = False
+in_between_final_screen = False
+please_dont_spawn_another_queen = False
+did_you_win = 0
+keep_firing_gurl = True
+fire_frames_two = 0
+''' ---------- Classes ------------ '''
+class Block(pygame.sprite.Sprite):
+    #This class represents the block. 
+    def __init__(self, color):
+        # Call the parent class (Sprite) constructor
+        super().__init__()
+ 
+        self.image = pygame.Surface([20, 15])
+        self.image.fill(color)
+ 
+        self.rect = self.image.get_rect()
+
+class Moving_Block(pygame.sprite.Sprite):
+    #This class represents the block. 
+    def __init__(self, color):
+        # Call the parent class (Sprite) constructor
+        super().__init__()
+
+        self.image = pygame.Surface([20, 15])
+        self.image.fill(color)
+        self.check = Truefirst_time_startup = True
+        self.direction = random.randrange(0,2)
+        self.change_x = random.randrange(1,5)
+ 
+        self.rect = self.image.get_rect()
+    def update(self):
+        if self.check == True:
+            if self.direction == 0:
+                self.change_x *= -1
+            self.check = False
+        if self.rect.x <= 0 :
+            self.change_x *= -1
+        elif self.rect.x >= screen_width - 20:
+            self.change_x *= -1
+        self.rect.x += self.change_x
+class Queen_Block(pygame.sprite.Sprite):
+    #This class represents the block. 
+    def __init__(self, color):
+        # Call the parent class (Sprite) constructor
+        super().__init__()
+        self.check = True
+        self.direction = random.randrange(0,2)
+        self.image = pygame.Surface([120, 105])
+        self.image.fill(color)
+        self.queen_health = 400
+        self.change_x = 2
+ 
+        self.rect = self.image.get_rect()
+    def update(self):
+        if self.check == True:
+            if self.direction == 0:
+                self.change_x *= -1
+            self.check = False
+        if self.rect.x <= 0 :
+            self.change_x *= -1
+        elif self.rect.x >= screen_width - 120:
+            self.change_x *= -1
+        self.rect.x += self.change_x
+class Player(pygame.sprite.Sprite):
+    #This class represents the Player. 
+ 
+    def __init__(self):
+        #Set up the player on creation.
+        # Call the parent class (Sprite) constructor
+        super().__init__()
+
+        self.image = pygame.Surface([20, 20])
+        self.image.fill(WHITE)
+        self.rect = self.image.get_rect()
+ 
+    def update(self):
+        #Update the player's position.
+        # Get the current mouse position. This returns the position
+        # as a list of two numbers.
+        pos = pygame.mouse.get_pos()
+ 
+        # Set the player x position to the mouse x position
+        self.rect.x = pos[0]
+        
+        
+ 
+ 
+class Bullet(pygame.sprite.Sprite):
+    #This class represents the bullet.
+    def __init__(self):
+        # Call the parent class (Sprite) constructor
+        super().__init__()
+
+        self.color_total = (color_r_player, color_g_player, color_b_player)
+        
+        self.image = pygame.Surface([4, 10])
+        self.image.fill(self.color_total)
+ 
+        self.rect = self.image.get_rect()
+ 
+    def update(self):
+        self.color_total = (color_r_player, color_g_player, color_b_player)
+        self.image.fill(self.color_total)
+        
+        #Move the bullet.
+        self.rect.y -= 3
+
+class Moving_Bullet(pygame.sprite.Sprite):
+    #This class represents the bullet.
+    def __init__(self):
+        # Call the parent class (Sprite) constructor
+        super().__init__()
+        self.color_r = random.randrange(256)
+        self.color_g = random.randrange(256)
+        self.color_b = random.randrange(256)
+        self.color_total = (self.color_r, self.color_g, self.color_b)
+         
+        self.image = pygame.Surface([4, 10])
+        self.image.fill(self.color_total)
+        self.change_y_bullet = random.randrange(1,5)
+        #self.randomizing_y = random.randrange(1,5)
+        self.change_x_bullet = random.randrange(-4,5)
+        #self.randomizing_x = random.randrange(-5,6)
+        self.rect = self.image.get_rect()
+ 
+    def update(self):
+        #Move the bullet.
+        self.rect.y += self.change_y_bullet
+        self.rect.x -= self.change_x_bullet
+
+class Moving_Bouncing_Bullet(pygame.sprite.Sprite):
+    #This class represents the bullet.
+    def __init__(self):
+        # Call the parent class (Sprite) constructor
+        super().__init__()
+        
+        self.color_r = random.randrange(256)
+        self.color_g = random.randrange(256)
+        self.color_b = random.randrange(256)
+        self.color_total = (self.color_r, self.color_g, self.color_b)
+        
+        self.image = pygame.Surface([4, 10])
+        self.image.fill(self.color_total)
+        
+        self.change_y_bullet = random.randrange(1,5)
+        self.change_x_bullet = random.randrange(-6,7)
+        
+        self.checkers = False
+        self.rect = self.image.get_rect()
+        self.x_boundary_right = 0
+        self.x_boundary_left = 0
+
+ 
+    def update(self):
+        #Randomize the colors
+        self.color_r = random.randrange(256)
+        self.color_g = random.randrange(256)
+        self.color_b = random.randrange(256)
+        self.color_total = (self.color_r, self.color_g, self.color_b)
+        self.image.fill(self.color_total)
+        #Move the bullet.
+        if self.checkers == False:
+            self.x_boundary_right = self.rect.x + 24
+            self.x_boundary_left = self.rect.x - 24
+            self.checkers = True
+        self.rect.y += self.change_y_bullet
+        self.rect.x -= self.change_x_bullet
+
+        if self.rect.x >= self.x_boundary_right:
+            self.change_x_bullet *= -1
+        if self.rect.x <= self.x_boundary_left:
+            self.change_x_bullet *= -1
+
+class Huge_Bullet(pygame.sprite.Sprite):
+    #This class represents the bullet.
+    def __init__(self):
+        # Call the parent class (Sprite) constructor
+        super().__init__()
+        self.color_total = (color_r_player, color_g_player, color_b_player)
+        
+        self.image = pygame.Surface([45, 45])
+        self.image.fill(self.color_total)
+ 
+        self.rect = self.image.get_rect()
+ 
+    def update(self):
+        self.color_total = (color_r_player, color_g_player, color_b_player)
+        self.image.fill(self.color_total)
+        
+        #Move the bullet.
+        self.rect.y -= 6
+
+class Huge_Enemy_Bullet(pygame.sprite.Sprite):
+    #This class represents the bullet.
+    def __init__(self):
+        # Call the parent class (Sprite) constructor
+        super().__init__()
+        self.color_r = random.randrange(256)
+        self.color_g = random.randrange(256)
+        self.color_b = random.randrange(256)
+        self.color_total = (self.color_r, self.color_g, self.color_b)
+ 
+        self.image = pygame.Surface([35, 35])
+        self.image.fill(self.color_total)
+ 
+        self.rect = self.image.get_rect()
+ 
+    def update(self):
+        #Move the bullet.
+        self.rect.y += 4
+
+class Enemy_Bullet(pygame.sprite.Sprite):
+    #This class represents the bullet.
+    def __init__(self):
+        # Call the parent class (Sprite) constructor
+        super().__init__()
+        self.color_r = random.randrange(256)
+        self.color_g = random.randrange(256)
+        self.color_b = random.randrange(256)
+        self.color_total = (self.color_r, self.color_g, self.color_b)
+ 
+        self.image = pygame.Surface([4, 10])
+        self.image.fill(self.color_total)
+ 
+        self.rect = self.image.get_rect()
+ 
+    def update(self):
+        #Move the bullet.
+        self.rect.y += 3
+        
+ 
+''' ---------- Create the window ---------- '''
+ 
+# Initialize Pygame
+pygame.init()
+ 
+# Set the height and width of the screen
+screen_width = 700
+screen_height = 400
+screen = pygame.display.set_mode([screen_width, screen_height])
+ 
+''' ---------- Sprite lists ---------- '''
+ 
+# This is a list of every sprite. All blocks and the player block as well.
+all_sprites_list = pygame.sprite.Group()
+ 
+# List of each block in the game
+enemy_block_list = pygame.sprite.Group()
+huge_block_list = pygame.sprite.Group()
+shotgun_block_list = pygame.sprite.Group()
+queen_block_list = pygame.sprite.Group()
+#all youve done is create the list
+player_list = pygame.sprite.Group()
+ 
+# List of each bullet
+my_bullet_list = pygame.sprite.Group()
+huge_bullet_list = pygame.sprite.Group()
+enemy_bullet_list = pygame.sprite.Group()
+
+# List of enemy bullets
+
+''' ---------- Create the sprites ---------- '''
+# Enemy Generation Bellow
+for i in range(1):
+    # This represents a block
+    color_r_block = random.randrange(256)
+    color_g_block = random.randrange(256)
+    color_b_block = random.randrange(256)
+    color_block_total = (color_r_block, color_g_block, color_b_block)
+    
+    block = Moving_Block(color_block_total)
+ 
+    # Set a random location for the block
+    block.rect.x = random.randrange(screen_width - 15)
+    block.rect.y = random.randrange(screen_height - 150)
+ 
+    # Add the block to the list of objects
+    enemy_block_list.add(block)
+    all_sprites_list.add(block)
+    enemies += 1
+ 
+# Create a red player block
+player = Player()
+player_list.add(player)
+all_sprites_list.add(player)
+ 
+# Loop until thereset_screen_frames += 1 user clicks the close button.
+done = False
+ 
+# Used to manage how fast the screen updates
+clock = pygame.time.Clock()##    # Calculate mechanics for each enemy bullet
+
+ 
+score = 0
+player.rect.y = 370
+ 
+''' -------- Main Program Loop ----------- '''
+while not done:
+    # --- Event Processing
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            done = True
+ 
+        elif event.type == pygame.MOUSEBUTTONDOWN and event.button == LEFT and first_time_startup == False:
+            # Fire a bullet if the user clicks the mouse button
+            bullet = Bullet()
+            # Set the bullet so it is where the player is
+            bullet.rect.x = player.rect.x + 8
+            bullet.rect.y = player.rect.y + 5
+            # Add the bullet to the lists
+            all_sprites_list.add(bullet)
+            my_bullet_list.add(bullet)
+
+        elif event.type == pygame.MOUSEBUTTONDOWN and event.button == MIDDLE and first_time_startup == False:
+            powerup_frames += 1
+            if powerup_frames >= 1:
+                powerup_active_one = True
+                powerup_frames = 0
+        elif event.type == pygame.MOUSEBUTTONUP and event.button == MIDDLE and first_time_startup == False:
+            powerup_active_one = False
+            powerup_frames = 0
+        elif event.type == pygame.MOUSEBUTTONDOWN and event.button == RIGHT and first_time_startup == False:
+            powerup_active = True
+        elif event.type == pygame.MOUSEBUTTONUP and event.button == RIGHT and first_time_startup == False:
+            powerup_active = False
+    #print(powerup_frames)
+    if first_time_startup == False:
+        ''' ---------- Game logic ---------- '''
+
+        # Call the update() method on all the sprites
+        all_sprites_list.update()
+
+        ''' ---------- Game Startup Screen ---------- '''
+        
+        ''' ---------- Actual Game Bellow ---------- '''
+
+        ### ---------- Players Powerups Bellow ---------- ###
+        # Rapid Fire Bellow
+        if powerup_active == True and powerup > 0 and round_reset == False:
+            bullet = Bullet()
+            # Set the bullet so it is where the player is
+            bullet.rect.x = player.rect.x + 8
+            bullet.rect.y = player.rect.y + 5
+            # Add the bullet to the lists
+            all_sprites_list.add(bullet)
+            my_bullet_list.add(bullet)
+            powerup -= 1
+            
+        # Powerup Huge Bullet
+        if powerup_active_one == True and powerup_one > 0 and round_reset == False:
+            bullet = Huge_Bullet()
+            # Set the bullet so it is where the player is
+            bullet.rect.x = player.rect.x - 15
+            bullet.rect.y = player.rect.y - 40
+            # Add the bullet to the lists
+            all_sprites_list.add(bullet)
+            huge_bullet_list.add(bullet)
+            powerup_one -= 1
+            powerup_active_one = False
+
+        ### ---------- Enemy Bullet Generation Bellow ---------- ###
+        # Bullet Maths
+        fire_time = round(fire_frames / 60, 2)
+        
+        for block in enemy_block_list:
+            if fire_time > 2:
+                bullet = Enemy_Bullet()
+                # Set the bullet so it is where the enemy is
+                bullet.rect.x = block.rect.x + 8
+                bullet.rect.y = block.rect.y
+                # Add the bullet to the lists
+                all_sprites_list.add(bullet)
+                enemy_bullet_list.add(bullet)
+                fire_frames = 0
+        # Huge Enemy Bullet Generation Bellow
+        for block in huge_block_list:
+            if fire_time > 2:
+                bullet = Huge_Enemy_Bullet()
+                # Set the bullet so it is where the enemy is
+                bullet.rect.x = block.rect.x - 8
+                bullet.rect.y = block.rect.y + 10
+                # Add the bullet to the lists
+                all_sprites_list.add(bullet)
+                enemy_bullet_list.add(bullet)
+                fire_frames = 0
+        # Shotgun Enemy Bullet Generation Bellow
+        for block in shotgun_block_list:
+            if fire_time > 2:
+                for i in range(5):
+                    bullet = Moving_Bullet()
+                    bullet.rect.x = block.rect.x + 8
+                    bullet.rect.y = block.rect.y
+                    # Add the bullet to the lists
+                    all_sprites_list.add(bullet)
+                    enemy_bullet_list.add(bullet)
+                    fire_frames = 0
+        # Queen Enemy Bullet Generation Bellow
+        for block in queen_block_list:
+            if keep_firing_gurl == True and fire_frames >= 240 and queen_death_animation == False:
+                keep_firing_gurl = False
+                fire_frames = 0
+                
+            if keep_firing_gurl == False and fire_frames >= 240 and queen_death_animation == False:
+                keep_firing_gurl = True
+                fire_frames = 0
+                fire_frames_two = 0
+
+            if keep_firing_gurl == False and queen_death_animation == False:
+                fire_frames_two += 1
+
+            if fire_frames_two >= 40 and queen_death_animation == False:
+                bullet = Huge_Enemy_Bullet()
+                # Set the bullet so it is where the enemy is
+                bullet.rect.x = block.rect.x + 60
+                bullet.rect.y = block.rect.y + 40
+                # Add the bullet to the lists
+                all_sprites_list.add(bullet)
+                enemy_bullet_list.add(bullet)
+                fire_frames_two = 0
+                
+            if keep_firing_gurl == True and queen_death_animation == False:
+                bullet = Moving_Bouncing_Bullet()
+                # Set the bullet so it is where the enemy is
+                bullet.rect.x = block.rect.x + 60
+                bullet.rect.y = block.rect.y + 40
+                # Add the bullet to the lists
+                all_sprites_list.add(bullet)
+                enemy_bullet_list.add(bullet)        
+        
+        ### ----------- Bullet Sprite Calculators and Checkers ---------- ###
+        # Calculate the mechanics for each enemy bullet
+        for bullet in enemy_bullet_list:
+            block_hit_list = pygame.sprite.spritecollide(bullet, player_list, False)
+
+            for player in block_hit_list:
+                enemy_bullet_list.remove(bullet)
+                all_sprites_list.remove(bullet)
+                lives -= 1
+
+            if bullet.rect.y > 400:
+                huge_bullet_list.remove(bullet)
+                all_sprites_list.remove(bullet)
+                
+
+        # Calculate mechanics for each player bullet
+        for bullet in my_bullet_list:
+       
+            block_hit_list = pygame.sprite.spritecollide(bullet, enemy_block_list, True) + pygame.sprite.spritecollide(bullet, huge_block_list, True) + pygame.sprite.spritecollide(bullet, shotgun_block_list, True)
+     
+            # For each block hit, remove the bullet and add to the score
+            for block in block_hit_list:
+                my_bullet_list.remove(bullet)
+                all_sprites_list.remove(bullet)
+                score += 1
+                enemies -= 1
+                
+            # Remove the bullet if it flies up off the screen
+            if bullet.rect.y < -10 or bullet.rect.y > 410:
+                my_bullet_list.remove(bullet)
+                all_sprites_list.remove(bullet)
+                
+        # Calculate the mechanics for each huge bullet
+        for bullet in huge_bullet_list:
+       
+            block_hit_list = pygame.sprite.spritecollide(bullet, enemy_block_list, True) + pygame.sprite.spritecollide(bullet, huge_block_list, True) + pygame.sprite.spritecollide(bullet, shotgun_block_list, True)
+     
+            # For each block hit, remove the bullet and add to the score
+            for block in block_hit_list:
+                score += 1
+                enemies -= 1
+                
+            # Remove the bullet if it flies up off the screen
+            if bullet.rect.y < -10 or bullet.rect.y > 410:
+                huge_bullet_list.remove(bullet)
+                all_sprites_list.remove(bullet)
+
+        #Remove enemy bullets if hit by big bullet
+        for bullet in huge_bullet_list:
+
+            pygame.sprite.spritecollide(bullet, enemy_bullet_list, True) 
+
+        # Valculate mechanics for each bullet as they hit the queen
+        for bullet in huge_bullet_list:
+       
+            block_hit_list = pygame.sprite.spritecollide(bullet, queen_block_list, False)
+            
+            for block in block_hit_list:
+                block.queen_health -= 5
+                huge_bullet_list.remove(bullet)
+                all_sprites_list.remove(bullet)
+                
+        for bullet in my_bullet_list:
+
+            block_hit_list = pygame.sprite.spritecollide(bullet, queen_block_list, False)
+
+            for block in block_hit_list:
+                block.queen_health -= 1
+                my_bullet_list.remove(bullet)
+                all_sprites_list.remove(bullet)
+
+        for block in queen_block_list:
+            if block.queen_health <= 0:
+                
+                all_sprites_list.remove(block)
+                enemies -= 1
+                queen_death_animation = True
+                queen_death_animation_counter += 1
+                
+            if queen_death_animation_counter >= 240:
+                queen_block_list.remove(block)
+                queen_is_alive = False
+        #Text Bellow
+    ##    print(enemy_block_list)
+        frame += 1
+        fire_frames += 1
+        clock_time = round(frame / 60, 2)
+    ##    print(clock_time)
+
+        # Round Wins and Losses Bellow
+        ### ---------- Boss Round Checking ---------- ###
+        if color_sky_r <= 15 and lives <= 0:
+            restart_check = True
+            final_round = True
+        elif color_sky_r >= 255 and enemies == 0:
+            final_round = True
+            please_respawn = True
+            enemies += 1
+
+        ### ------------ Restart Between Rounds Bellow ---------- ###
+
+        if restart_check == False and final_round == False:
+            #Round Wins:
+            if enemies == 0 or lives <= 0 and already_checked == False:
+                please_clear_the_screen_sir = True
+                
+            if please_clear_the_screen_sir == True:
+                if enemies >= 1:
+                    enemies_are_alive = True    
+                elif enemies <= 0:
+                    enemies_are_alive = False
+                for block in enemy_block_list:
+                    enemy_block_list.remove(block)
+                    all_sprites_list.remove(block)
+                    enemies -= 1
+                for block in shotgun_block_list:
+                    shotgun_block_list.remove(block)
+                    all_sprites_list.remove(block)
+                    enemies -= 1
+                for block in huge_block_list:
+                    huge_block_list.remove(block)
+                    all_sprites_list.remove(block)
+                    enemies -= 1
+                for block in queen_block_list:
+                    queen_block_list.remove(block)
+                    all_sprites_list.remove(block)
+                for bullet in enemy_bullet_list:
+                    enemy_bullet_list.remove(bullet)
+                    all_sprites_list.remove(bullet)
+                for bullet in my_bullet_list:
+                    my_bullet_list.remove(bullet)
+                    all_sprites_list.remove(bullet)
+                for bullet in huge_bullet_list:
+                    huge_bullet_list.remove(bullet)
+                    all_sprites_list.remove(bullet)
+                please_clear_the_screen_sir = False
+                already_checked = True
+
+            if enemies_are_alive == False:
+                color_sky_r += 1
+                color_sky_g += 1
+                color_sky_b += 1
+                please_continue_reseting_counter += 1
+                color_sky = (color_sky_r, color_sky_g, color_sky_b)
+                if please_continue_reseting_counter >= 20:
+                    please_continue_reseting = True
+                    color_r_player -= 38
+                    color_g_player -= 38
+                    color_b_player -= 38
+                    enemies_are_alive = True
+                    please_continue_reseting_counter = 0
+                            
+            if enemies == 0 and please_continue_reseting == True:
+                round_number += 1
+                lives = 5
+                enemies += 1
+                round_reset = True
+                round_win_check = True
+
+            
+            #Round Losses:
+            if lives <= 0:
+                color_sky_r -= 1
+                color_sky_g -= 1
+                color_sky_b -= 1
+                please_continue_reseting_counter += 1
+                color_sky = (color_sky_r, color_sky_g, color_sky_b)
+                if please_continue_reseting_counter >= 20:
+                    please_continue_reseting = True
+                    color_r_player += 38
+                    color_g_player += 38
+                    color_b_player += 38
+                    please_continue_reseting_counter = 0
+            
+            if lives <= 0 and please_continue_reseting == True:
+                round_number += 1
+                lives = 5
+                enemies += 1
+                round_reset = True
+                round_win_check = False
+            #Reset Screen:
+            if round_reset == True:
+                #Clears the Screen of enemies and bullets
+                for block in enemy_block_list:
+                    enemy_block_list.remove(block)
+                    all_sprites_list.remove(block)
+                    enemies -= 1
+                for block in shotgun_block_list:
+                    shotgun_block_list.remove(block)
+                    all_sprites_list.remove(block)
+                    enemies -= 1
+                for block in huge_block_list:
+                    huge_block_list.remove(block)
+                    all_sprites_list.remove(block)
+                    enemies -= 1
+                for block in queen_block_list:
+                    queen_block_list.remove(block)
+                    all_sprites_list.remove(block)
+                for bullet in enemy_bullet_list:
+                    enemy_bullet_list.remove(bullet)
+                    all_sprites_list.remove(bullet)
+                for bullet in my_bullet_list:
+                    my_bullet_list.remove(bullet)
+                    all_sprites_list.remove(bullet)
+                for bullet in huge_bullet_list:
+                    huge_bullet_list.remove(bullet)
+                    all_sprites_list.remove(bullet)    
+                
+            if round_reset == True and reset_screen_frames <= 180:
+                reset_screen_frames += 1
+                if reset_screen_frames == 180:
+                    please_respawn = True
+                    fire_frames = 0
+
+                         
+                #Respawn The Bots
+                if round_reset == True and please_respawn == True and round_number != 1:
+                    #Resets Powerup Variable
+                    #Spawns new Bots
+                    for i in range(round_number * round_number):
+                        color_r_block = random.randrange(256)
+                        color_g_block = random.randrange(256)
+                        color_b_block = random.randrange(256)
+                        color_block_total = (color_r_block, color_g_block, color_b_block)
+                        
+                        block = Moving_Block(color_block_total)
+                     
+                        # Set a random location for the block
+                        block.rect.x = random.randrange(20, screen_width - 20)
+                        block.rect.y = random.randrange(5,350)
+                     
+                        # Add the block to the list of objects
+                        enemy_block_list.add(block)
+                        all_sprites_list.add(block)
+                        enemies += 1
+                        moving_block_spawn = False
+                    for i in range(round_number * 2):
+                        color_r_block = random.randrange(256)
+                        color_g_block = random.randrange(256)
+                        color_b_block = random.randrange(256)
+                        color_block_total = (color_r_block, color_g_block, color_b_block)
+                        
+                        block = Moving_Block(color_block_total)
+                     
+                        # Set a random location for the block
+                        block.rect.x = random.randrange(20, screen_width - 20)
+                        block.rect.y = random.randrange(5,350)
+                     
+                        # Add the block to the list of objects
+                        shotgun_block_list.add(block)
+                        all_sprites_list.add(block)
+                        enemies += 1
+                        moving_block_spawn = False
+                    for i in range(round_number):
+                        # This represents a block
+                        color_r_block = random.randrange(256)
+                        color_g_block = random.randrange(256)
+                        color_b_block = random.randrange(256)
+                        color_block_total = (color_r_block, color_g_block, color_b_block)
+                        
+                        block = Moving_Block(color_block_total)
+                     
+                        # Set a random location for the block
+                        block.rect.x = random.randrange(20, screen_width - 20)
+                        block.rect.y = random.randrange(5,350)
+                     
+                        # Add the block to the list of objects
+                        huge_block_list.add(block)
+                        all_sprites_list.add(block)
+                        enemies += 1
+                    round_reset = False
+                    please_respawn = False
+                    please_continue_reseting = False
+                    please_continue_reseting_counter = 0
+                    reset_screen_frames = 0
+                    enemies -= 1
+                    thickness_has_been_checked = False
+                elif round_reset == True and please_respawn == True and round_number == 1:
+                    for i in range(1):
+                        color_r_block = random.randrange(256)
+                        color_g_block = random.randrange(256)
+                        color_b_block = random.randrange(256)
+                        color_block_total = (color_r_block, color_g_block, color_b_block)
+                        
+                        block = Moving_Block(color_block_total)
+                     
+                        # Set a random location for the block
+                        block.rect.x = random.randrange(20, screen_width - 20)
+                        block.rect.y = random.randrange(5,350)
+                     
+                        # Add the block to the list of objects
+                        enemy_block_list.add(block)
+                        all_sprites_list.add(block)
+                        enemies += 1
+                        moving_block_spawn = False
+                        round_reset = False
+                        please_respawn = False
+                        reset_screen_frames = 0
+                        enemies -= 1
+                        please_continue_reseting = False
+                        please_continue_reseting_counter = 0
+                        thickness_has_been_checked = False
+        ### ----------- Color of the player bullets -------- ###
+        if color_sky_r == 155:
+            color_r_player = 255
+            color_g_player = 255
+            color_b_player = 255
+            
+        if color_r_player >= 255:
+            color_r_player = 255
+            color_g_player = 255
+            color_b_player = 255
+        if color_r_player <= 0:
+            color_r_player = 0
+            color_g_player = 0
+            color_b_player = 0
+
+
+        # Game Finishing
+        if restart_check == True and final_round == True:
+            for block in enemy_block_list:
+                enemy_block_list.remove(block)
+                all_sprites_list.remove(block)
+                enemies -= 1
+            for block in huge_block_list:
+                huge_block_list.remove(block)
+                all_sprites_list.remove(block)
+                enemies -= 1
+            for block in shotgun_block_list:
+                shotgun_block_list.remove(block)
+                all_sprites_list.remove(block)
+                enemies -= 1
+            for block in queen_block_list:
+                queen_block_list.remove(block)
+                all_sprites_list.remove(block)
+            for bullet in enemy_bullet_list:
+                enemy_bullet_list.remove(bullet)
+                all_sprites_list.remove(bullet)
+            for bullet in my_bullet_list:
+                my_bullet_list.remove(bullet)
+                all_sprites_list.remove(bullet)
+            for bullet in huge_bullet_list:
+                huge_bullet_list.remove(bullet)
+                all_sprites_list.remove(bullet) 
+            restart_frames += 1
+            quit_time_left = round((600 - restart_frames)/60, 1)
+            if event.type == pygame.MOUSEBUTTONDOWN and restart_frames >= 60:
+                restart_check = False
+                final_round = False
+                round_number = 0
+                frame = 0
+                enemies = 0
+                fire_frames = 0
+                fire_time = 0
+                lives = 3
+                powerup = 200
+                powerup_one = 10
+                color_sky_r = 155
+                color_sky_g = 155
+                color_sky_b = 155
+                color_r_player = 255
+                color_g_player = 255
+                color_b_player = 255
+                color_r_block = 0
+                color_g_block = 0
+                color_b_block = 0
+                restart_frames = 0
+                did_you_win = 0
+                line_thickness = -1
+                please_dont_spawn_another_queen = False
+                thickness = 1
+                queen_is_alive = True
+                bitch_tiddies = False
+                queen_death_animation_counter = 0
+                queen_death_animation = False
+                queen_explosion_movement = 0
+                queen_ellipse_radius = 0
+            elif restart_frames == 600:
+                done = True
+
+        ### ---------- Boss Fight and Checks ---------- ###
+        if final_round == True and lives <= 0 and restart_check == False:
+            screen.fill(color_sky)
+            reset_screen_frames += 1
+            did_you_win = 1
+            in_between_final_screen = True
+            for block in enemy_block_list:
+                enemy_block_list.remove(block)
+                all_sprites_list.remove(block)
+                enemies -= 1
+            for block in shotgun_block_list:
+                shotgun_block_list.remove(block)
+                all_sprites_list.remove(block)
+                enemies -= 1
+            for block in huge_block_list:
+                huge_block_list.remove(block)
+                all_sprites_list.remove(block)
+                enemies -= 1
+            for block in queen_block_list:
+                queen_block_list.remove(block)
+                all_sprites_list.remove(block)
+            for bullet in enemy_bullet_list:
+                enemy_bullet_list.remove(bullet)
+                all_sprites_list.remove(bullet)
+            for bullet in my_bullet_list:
+                my_bullet_list.remove(bullet)
+                all_sprites_list.remove(bullet)
+            for bullet in huge_bullet_list:
+                huge_bullet_list.remove(bullet)
+                all_sprites_list.remove(bullet)    
+            if reset_screen_frames == 180:
+                restart_check = True
+                in_between_final_screen = False
+                reset_screen_frames = 0
+            
+            
+        if final_round == True and queen_is_alive == False and restart_check == False:
+            reset_screen_frames += 1
+            screen.fill(color_sky)
+            did_you_win = 2
+            in_between_final_screen = True
+            for block in enemy_block_list:
+                enemy_block_list.remove(block)
+                all_sprites_list.remove(block)
+                enemies -= 1
+            for block in shotgun_block_list:
+                shotgun_block_list.remove(block)
+                all_sprites_list.remove(block)
+                enemies -= 1
+            for block in huge_block_list:
+                huge_block_list.remove(block)
+                all_sprites_list.remove(block)
+                enemies -= 1
+            for block in queen_block_list:
+                queen_block_list.remove(block)
+                all_sprites_list.remove(block)
+            for bullet in enemy_bullet_list:
+                enemy_bullet_list.remove(bullet)
+                all_sprites_list.remove(bullet)
+            for bullet in my_bullet_list:
+                my_bullet_list.remove(bullet)
+                all_sprites_list.remove(bullet)
+            for bullet in huge_bullet_list:
+                huge_bullet_list.remove(bullet)
+                all_sprites_list.remove(bullet)    
+            if reset_screen_frames == 180:
+                restart_check = True
+                in_between_final_screen = False
+                reset_screen_frames = 0
+            
+        if final_round == True and please_respawn == True and restart_check == False and please_dont_spawn_another_queen == False:
+            reset_screen_frames += 1
+            screen.fill(color_sky)
+            bitch_tiddies = True
+            for block in enemy_block_list:
+                enemy_block_list.remove(block)
+                all_sprites_list.remove(block)
+                enemies -= 1
+            for block in shotgun_block_list:
+                shotgun_block_list.remove(block)
+                all_sprites_list.remove(block)
+                enemies -= 1
+            for block in huge_block_list:
+                huge_block_list.remove(block)
+                all_sprites_list.remove(block)
+                enemies -= 1
+            for block in queen_block_list:
+                queen_block_list.remove(block)
+                all_sprites_list.remove(block)
+            for bullet in enemy_bullet_list:
+                enemy_bullet_list.remove(bullet)
+                all_sprites_list.remove(bullet)
+            for bullet in my_bullet_list:
+                my_bullet_list.remove(bullet)
+                all_sprites_list.remove(bullet)
+            for bullet in huge_bullet_list:
+                huge_bullet_list.remove(bullet)
+                all_sprites_list.remove(bullet)    
+            if reset_screen_frames == 180:
+                block = Queen_Block(BLACK)     
+                # Set a random location for the block
+                block.rect.x = 350
+                block.rect.y = 75
+                # Add the block to the list of objects
+                queen_block_list.add(block)
+                all_sprites_list.add(block)
+                please_respawn = False
+                lives = 7
+                powerup_one += 2
+                powerup += 40
+                reset_screen_frames = 0
+                bitch_tiddies = False
+                please_dont_spawn_another_queen = True
+            
+
+
+            
+        screen.fill(color_sky)
+        
+        # Draw Text
+        if round_reset == False:
+            font = pygame.font.SysFont('Calibri', 20, True, False)
+            
+            lives_left = font.render("Lives: " + str(lives), True, YELLOW)
+            screen.blit(lives_left, [10,10])
+            
+            powerup_one_left = font.render("Cannon Shots Left: " + str(powerup_one), True, YELLOW)
+            screen.blit(powerup_one_left, [10,30])
+
+            powerup_left = font.render("Machine Rounds Left: " + str(powerup), True, YELLOW)
+            screen.blit(powerup_left, [10,50])
+                                       
+        if round_reset == True and reset_screen_frames <= 180 and restart_check == False:
+            font = pygame.font.SysFont('Calibri', 20, True, False)
+            reset_screen_text_win = font.render('You have beat that wave of the colour swarm, but they will soon be back...', True, YELLOW)
+            reset_screen_text_lose = font.render('You were overwhelmed by the colour swarm and were forced to retreat...', True, YELLOW)
+            if round_win_check == True and round_number > 1:
+                screen.blit(reset_screen_text_win, [48,200])
+            elif round_win_check == False and round_number > 1:
+                screen.blit(reset_screen_text_lose, [48, 200])
+                
+        if reset_screen_frames >= 0 and in_between_final_screen == True and queen_is_alive == True:
+            font = pygame.font.SysFont('Calibri', 20, True, False)
+            game_over_final_screen_win = font.render("You have beaten the colour swarm and killed the Queen, you win!",True,WHITE)
+            screen.blit(game_over_final_screen_win, [20, 200])
+
+        if reset_screen_frames >= 0 and in_between_final_screen == True and queen_is_alive == False:
+            font = pygame.font.SysFont('Calibri', 20, True, False)
+            game_over_final_screen_loss = font.render("You have been overthrown by the colour swarm and the Queen is still alive, you lose!",True,WHITE)
+            screen.blit(game_over_final_screen_loss, [10, 200])
+
+        if restart_check == True and round_win_check == False:
+            font = pygame.font.SysFont('Calibri', 20, True, False)
+            restart_text_loss = font.render("You were overthrown by the swarm! Click to restart or wait " + str(quit_time_left) + " seconds to quit",True,WHITE)
+            screen.blit(restart_text_loss, [10, 200])
+            
+        if restart_check == True and round_win_check == True:
+            font = pygame.font.SysFont('Calibri', 20, True, False)
+            restart_text_win = font.render("You have beaten the swarm! Click to restart or wait " + str(quit_time_left) + " seconds to quit",True,BLACK)
+            screen.blit(restart_text_win, [45, 200])
+
+        if bitch_tiddies == True:
+            font = pygame.font.SysFont('Calibri', 17, True, False)
+            queen_preparation = font.render("The Queen is coming to fight you, this will determine whether you win or lose everything",True,BLACK)
+            screen.blit(queen_preparation, [45, 200])
+
+        if round_reset == True and round_number == 0:
+            font = pygame.font.SysFont('Calibri', 20, True, False)
+            screen_clean = font.render("The colour swarm is approaching, get ready...",True,BLACK)
+            screen.blit(screen_clean, [75, 200])
+
+        if in_between_final_screen == True and did_you_win == 1:
+            font = pygame.font.SysFont('Calibri', 20, True, False)
+            between_final_screen_text_loss = font.render("You were killed by the Queen, the colour swarm has overthrown you...",True,BLACK)
+            screen.blit(between_final_screen_text_loss, [75, 200])
+
+        if in_between_final_screen == True and did_you_win == 2:
+            font = pygame.font.SysFont('Calibri', 20, True, False)
+            between_final_screen_text_win = font.render("        You killed the Queen and defeated the colour swarm...",True,BLACK)
+            screen.blit(between_final_screen_text_win, [75, 200])
+
+        color_r_explosion = random.randrange(256)
+        color_g_explosion = random.randrange(256)
+        color_b_explosion = random.randrange(256)
+        color_explosion_total = (color_r_explosion, color_g_explosion, color_b_explosion)
+        if queen_death_animation == True:
+            for bullet in enemy_bullet_list:
+                enemy_bullet_list.remove(bullet)
+                all_sprites_list.remove(bullet)
+            for bullet in my_bullet_list:
+                my_bullet_list.remove(bullet)
+                all_sprites_list.remove(bullet)
+            for bullet in huge_bullet_list:
+                huge_bullet_list.remove(bullet)
+                all_sprites_list.remove(bullet)
+            queen_explosion_movement += 3
+            for block in queen_block_list:
+                pygame.draw.ellipse(screen, color_explosion_total, [block.rect.x + 60 - queen_explosion_movement / 2, block.rect.y + 52 - queen_explosion_movement / 2,queen_explosion_movement,queen_explosion_movement], queen_ellipse_radius)
+                if queen_ellipse_radius < 20:
+                    queen_ellipse_radius += 1
+        
+        all_sprites_list.draw(screen)
+        ### ----------- Enemy Boarder Generator ------------ ###
+        for block in enemy_block_list:
+            pygame.draw.rect(screen, BLACK, [block.rect.x-1, block.rect.y-1, 22, 17],1)
+        for block in huge_block_list:
+            pygame.draw.rect(screen, BLACK, [block.rect.x-1, block.rect.y-1, 22, 17],1)
+        for block in shotgun_block_list:
+            pygame.draw.rect(screen, BLACK, [block.rect.x-1, block.rect.y-1, 22, 17],1)
+        for block in queen_block_list:
+            pygame.draw.rect(screen, BLACK, [block.rect.x-1, block.rect.y-1, 122, 107],1)
+
+        if final_round == True:
+            for block in queen_block_list:
+                pygame.draw.line(screen, RED, [screen_width,0], [screen_width,400], 10)
+                pygame.draw.line(screen, GREEN, [screen_width, 0], [screen_width, block.queen_health],10)
+        # Draw all the sprites blocks
+        player_list.draw(screen)
+        enemy_block_list.draw(screen)
+        huge_block_list.draw(screen)
+        shotgun_block_list.draw(screen)
+        queen_block_list.draw(screen)
+
+        # Draw all the spites bullets
+        my_bullet_list.draw(screen)
+        huge_bullet_list.draw(screen)
+        enemy_bullet_list.draw(screen)
+        # Can also use 'all_sprites_list.draw(screen)' if this starts problems
+
+    ### ---------- Start Up Screen Here --------- ###
+    if first_time_startup == True:
+        screen.fill(color_sky)
+
+    if first_time_startup == True:
+        if text_startup_one == True and startup_counter <= 180:
+            font = pygame.font.SysFont('Calibri', 17, True, False)
+            startup_one = font.render("The color swarm is coming to bring darkness, as guardian of light you must stop them...",True,BLACK)
+            screen.blit(startup_one, [45, 200])
+            startup_counter += 1
+            if startup_counter >= 180:
+                text_startup_one = False
+                startup_counter = 0
+                text_startup_two = True
+        if text_startup_two == True and startup_counter <= 180:
+            font = pygame.font.SysFont('Calibri', 17, True, False)
+            startup_two = font.render("Shoot with left click, machine gun with right, and scroll wheel is a huge bullet...",True,BLACK)
+            screen.blit(startup_two, [45, 200])
+            startup_counter += 1
+            if startup_counter >= 180:
+                text_startup_two = False
+                startup_counter = 0
+                text_startup_three = True
+        
+        if text_startup_three == True and startup_counter <= 180:
+            font = pygame.font.SysFont('Calibri', 14, True, False)
+            startup_three = font.render("Spare your ammo, you only have that much for the game, but your lives will reset each round...",True,BLACK)
+            screen.blit(startup_three, [45, 200])
+            startup_counter += 1
+            if startup_counter >= 180:
+                text_startup_three = False
+                startup_counter = 0
+                text_startup_four = True
+        if text_startup_four == True and startup_counter <= 180:
+            font = pygame.font.SysFont('Calibri', 16, True, False)
+            startup_four = font.render("You can teleport by moving your cursor off the game and then moving it to the destination...",True,BLACK)
+            screen.blit(startup_four, [45, 200])
+            startup_counter += 1
+            if startup_counter >= 180:
+                text_startup_four = False
+                startup_counter = 0
+                first_time_startup = False
+    if first_time_startup == False:
+        ### ----------- Player and Player Bullets Boarder Generator --------- ###
+        if enemies == 0 and thickness_has_been_checked == False or lives <= 0 and thickness_has_been_checked == False:
+            thickness_check = True
+            thickness_has_been_checked = True
+            
+        if enemies == 0 and thickness_check == True and thickness_counter <= 1:
+            thickness += 1
+            line_thickness += 0.5
+            thickness_counter += 1
+        elif lives <= 0 and thickness_check == True and thickness_counter <= 1:
+            thickness -= 1
+            line_thickness -= 0.5
+            thickness_counter += 1
+
+        if thickness_counter > 1:
+            thickness_check = False
+            thickness_counter = 0
+            
+        if thickness <= 0:
+            thickness = 1
+        elif thickness > 13:
+            thickness = 13
+        if line_thickness <= 0:
+            line_thickness = 0
+
+        pos = pygame.mouse.get_pos()
+        #--- Top
+        pygame.draw.line(screen, BLACK, [pos[0],370 + line_thickness], [pos[0] + 20, 370 + line_thickness], thickness)
+        #--- Bottom
+        pygame.draw.line(screen, BLACK, [pos[0], 390 - line_thickness], [pos[0] + 20, 390 - line_thickness], thickness)
+        #--- Left
+        pygame.draw.line(screen, BLACK, [pos[0] + line_thickness, 370], [pos[0] + line_thickness, 390], thickness)
+        #--- Right
+        pygame.draw.line(screen, BLACK, [pos[0] + 20 - line_thickness, 370], [pos[0] + 20 - line_thickness, 390], thickness)
+    #pygame.draw.rect(screen, BLACK, [pos[0], 370, 20, 20],thickness)
+
+ 
+    # Go ahead and update the screen with what we've drawn.
+    pygame.display.flip()
+ 
+    # --- Limit to 20 frames per second
+    clock.tick(60)
+    # NUMBER TRACKING STATEMENTS BELLOW
+
+pygame.quit()
