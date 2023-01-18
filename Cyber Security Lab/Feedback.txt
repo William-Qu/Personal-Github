@@ -1,0 +1,11 @@
+Documentation: 2/3
+	No discussion of how environ address was computed or of syscalls.
+Correctness: 3/3
+	Good job.
+Style and Clarity: 2/2
+	
+Testing: 0.25/2
+	Incomplete, no separate testing document, no output files provided.
+Total: 7.25/10
+
+
