@@ -1,0 +1,41 @@
+module TestbenchControlUnit;
+	reg [31:0] regA, regB;
+	reg clk;
+	wire [31:0] HI, LO;
+	//wire [31:0] reg0, reg1, reg2, reg3, reg4, reg5, reg6, reg7, reg8, reg9, reg10, reg11, reg12, reg13, reg14, reg15, reg16;
+	
+	//if (OPCode == 'b00001)	//SHL Module Name: left_shift
+	//if (OPCode == 'b00010)	//SHR logical Module Name: right_shift_combined
+	//if (OPCode == 'b00011)	//SHR arithmetic Module Name: right_shift_combined
+	//if (OPCode == 'b00100)	//Rotate L Module Name: left_rotate
+	//if (OPCode == 'b00101)	//Rotate R Module Name: left_rotate
+	//if (OPCode == 'b00110)	//AND Module Name: logical_and
+	//if (OPCode == 'b00111)	//OR Module Name: logical_or
+	//if (OPCode == 'b01000)	//NOT Module Name: NOT
+	//if (OPCode == 'b01001)	//Neg Module Name: twoCompliment
+	//if (OPCode == 'b01010)	//Add Module Name: Hierarchical_CLA
+	//if (OPCode == 'b01011)	//Subtract Module Name: Hierarchical_CLA
+	//if (OPCode == 'b01100)	//Multiply Module Name: boothMultiplier
+	//if (OPCode == 'b01101)	//Divide Module Name: nonRestoringDivisionPosiNeg
+	
+	
+
+	initial 
+	begin 
+		//case 0 -- 
+		regA <= 32'b00000000000000000000000000000000;
+		regB <= 32'b00000000000000000000000000000000;
+		#10 $display(" HI = %b", HI);					 |
+		#10 $display(" LO = %b", LO);					 |
+		//case 1
+		regA <= 32'b00000000000000000000000000000000;
+		regB <= 32'b00000000000000000000000000000000;
+		#10 $display(" HI = %b", HI);					 |
+		#10 $display(" LO = %b", LO);					 |
+		//case 1
+		regA <= 32'b00000000000000000000000000000000;
+		regB <= 32'b00000000000000000000000000000000;
+		#10 $display(" HI = %b", HI);					 |
+		#10 $display(" LO = %b", LO);					 |
+	end
+endmodule 

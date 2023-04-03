@@ -1,0 +1,30 @@
+'timescale 1ns/10ps
+module ControlUnitBus(
+input clr, clk, ALUen, Halt,
+output [31:0] OutportOut
+);
+
+parameter ResetState = 3'b000, T0 = 3'b001, T1 = 3'b010, T2 = 3'b011, T3 = 3'b100, T4 = 3'b101, T5 = 3'b110;
+
+reg [3:0] PresentState;
+
+module Bus(
+input clr, clk, MDRRead, ALUen, incPC, BAOut, //Bits for enabling and disabling register functions
+input R0out, R1out, R2out, R3out, R4out, R5out, R6out, R7out,R8out, R9out, R10out, R11out, R12out, R13out, R14out, R15out,HIout, LOout, ZHIout, ZLOout,PCout, MDRout, InportOut, Cout, //Output Select Signals for which register were taking data from
+input r0ins, r1ins, r2ins, r3ins, r4ins, r5ins, r6ins, r7ins, r8ins, r9ins, r10ins, r11ins, r12ins, r13ins, r14ins, r15ins, HIins, LOins, ZHIins, ZLOins,PCins, MDRins, MARins, Inports, Outports, IRins, //Input Select Signals for which register were putting data into
+input [31:0] MDRMDataIn, //MDR Data In register
+output [31:0] OutportOut, IROut //Outport Output Signal to output signals to a display
+);
+
+always @ (posedge clk, posedge clr) begin
+	if (clr) PresentState = ResetState;
+	case (PresentState)
+		ResetState : if (~clr) PresentState = T0;	
+		T0	:	begin //In this cycle, we will 
+					
+					
+				end
+	endcase
+end
+
+endmodule 

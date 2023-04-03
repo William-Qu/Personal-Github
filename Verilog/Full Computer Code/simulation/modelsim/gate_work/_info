@@ -1,0 +1,47 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\Users\789wi\Videos\ELEC-374\simulation\modelsim
+vboothMultiplier
+Ic4n7Y0fY7AXahzDToNF883
+V3Ej02Sic5l3DfKiWHKl@83
+Z1 dC:\Users\789wi\Videos\ELEC-374\simulation\modelsim
+w1678039910
+8Phase1_6_1200mv_85c_slow.vo
+FPhase1_6_1200mv_85c_slow.vo
+L0 31
+Z2 OV;L;10.1d;51
+r1
+31
+Z3 o-vlog01compat -work work -O0
+nbooth@multiplier
+!i10b 1
+!s100 eahF][ER22:cYEnOmSET=2
+!s85 0
+!s108 1678299074.389000
+!s107 Phase1_6_1200mv_85c_slow.vo|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+.|Phase1_6_1200mv_85c_slow.vo|
+!s101 -O0
+!s92 -vlog01compat -work work +incdir+. -O0
+vTestbenchControlUnit
+!i10b 1
+!s100 cMK>HnH9@cV50BZC<@5cg0
+ILnQF4dBaMF15h_EkU9ChB3
+VmSW>PIWaMnSIO]MUnng4H1
+R1
+w1678140766
+8C:/Users/789wi/Videos/ELEC-374/TestbenchControlUnit.v
+FC:/Users/789wi/Videos/ELEC-374/TestbenchControlUnit.v
+L0 2
+R2
+r1
+!s85 0
+31
+!s108 1678299075.039000
+!s107 C:/Users/789wi/Videos/ELEC-374/TestbenchControlUnit.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/789wi/Videos/ELEC-374|C:/Users/789wi/Videos/ELEC-374/TestbenchControlUnit.v|
+!s101 -O0
+R3
+!s92 -vlog01compat -work work +incdir+C:/Users/789wi/Videos/ELEC-374 -O0
+n@testbench@control@unit

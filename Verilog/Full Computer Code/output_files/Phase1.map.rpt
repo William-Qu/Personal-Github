@@ -1,0 +1,1577 @@
+Analysis & Synthesis report for Phase1
+Mon Apr 03 16:31:36 2023
+Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis RAM Summary
+  9. User-Specified and Inferred Latches
+ 10. Registers Removed During Synthesis
+ 11. Removed Registers Triggering Further Register Optimizations
+ 12. General Register Statistics
+ 13. Inverted Register Statistics
+ 14. Registers Added for RAM Pass-Through Logic
+ 15. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 16. Source assignments for Bus:B|Memory:memory|altsyncram:RAMregisters_rtl_0|altsyncram_nqg1:auto_generated
+ 17. Parameter Settings for User Entity Instance: Top-level Entity: |ControlUnitBus
+ 18. Parameter Settings for Inferred Entity Instance: Bus:B|Memory:memory|altsyncram:RAMregisters_rtl_0
+ 19. altsyncram Parameter Settings by Entity Instance
+ 20. Port Connectivity Checks: "Bus:B|ALU:Logic|Hierarchical_CLA:sub"
+ 21. Port Connectivity Checks: "Bus:B|ALU:Logic|Hierarchical_CLA:add"
+ 22. Port Connectivity Checks: "Bus:B|ALU:Logic|right_rotate:rotateR"
+ 23. Port Connectivity Checks: "Bus:B|ALU:Logic|left_rotate:rotateL"
+ 24. Port Connectivity Checks: "Bus:B|ALU:Logic|right_shift_combined:SHRA"
+ 25. Port Connectivity Checks: "Bus:B|ALU:Logic|right_shift_combined:SHRL|dff_Q:b2v_inst35"
+ 26. Port Connectivity Checks: "Bus:B|ALU:Logic|right_shift_combined:SHRL|mux2_1:b2v_inst1"
+ 27. Port Connectivity Checks: "Bus:B|ALU:Logic|right_shift_combined:SHRL"
+ 28. Port Connectivity Checks: "Bus:B|ALU:Logic|left_shift:SHL|dff_Q:b2v_inst71"
+ 29. Port Connectivity Checks: "Bus:B|ALU:Logic|left_shift:SHL"
+ 30. Port Connectivity Checks: "Bus:B|reg32bit:MAR"
+ 31. Port Connectivity Checks: "Bus:B|reg32bit:RA"
+ 32. Port Connectivity Checks: "Bus:B"
+ 33. Elapsed Time Per Partition
+ 34. Analysis & Synthesis Messages
+ 35. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++---------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                          ;
++------------------------------------+--------------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Mon Apr 03 16:31:35 2023            ;
+; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version ;
+; Revision Name                      ; Phase1                                           ;
+; Top-level Entity Name              ; ControlUnitBus                                   ;
+; Family                             ; Cyclone III                                      ;
+; Total logic elements               ; 9,579                                            ;
+;     Total combinational functions  ; 8,944                                            ;
+;     Dedicated logic registers      ; 931                                              ;
+; Total registers                    ; 931                                              ;
+; Total pins                         ; 67                                               ;
+; Total virtual pins                 ; 0                                                ;
+; Total memory bits                  ; 16,384                                           ;
+; Embedded Multiplier 9-bit elements ; 0                                                ;
+; Total PLLs                         ; 0                                                ;
++------------------------------------+--------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EP3C16F484C6       ;                    ;
+; Top-level entity name                                                      ; ControlUnitBus     ; Phase1             ;
+; Family name                                                                ; Cyclone III        ; Cyclone IV GX      ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                 ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM Block Balancing                                                   ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; On                 ; On                 ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processors 2-4         ; < 0.1%      ;
+;     Processors 5-8         ;   0.0%      ;
++----------------------------+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                               ;
++----------------------------------------+-----------------+-------------------------------------------------------+-------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path       ; Used in Netlist ; File Type                                             ; File Name with Absolute Path                                            ; Library ;
++----------------------------------------+-----------------+-------------------------------------------------------+-------------------------------------------------------------------------+---------+
+; bin_memory_file.txt                    ; yes             ; User File                                             ; C:/Users/789wi/Videos/ELEC-374/bin_memory_file.txt                      ;         ;
+; Bus.v                                  ; yes             ; User Verilog HDL File                                 ; C:/Users/789wi/Videos/ELEC-374/Bus.v                                    ;         ;
+; CLA_8inputs_updated.v                  ; yes             ; User Verilog HDL File                                 ; C:/Users/789wi/Videos/ELEC-374/CLA_8inputs_updated.v                    ;         ;
+; mux2_1.v                               ; yes             ; User Verilog HDL File                                 ; C:/Users/789wi/Videos/ELEC-374/mux2_1.v                                 ;         ;
+; twoCompliment.v                        ; yes             ; User Verilog HDL File                                 ; C:/Users/789wi/Videos/ELEC-374/twoCompliment.v                          ;         ;
+; right_shift_combined.v                 ; yes             ; User Verilog HDL File                                 ; C:/Users/789wi/Videos/ELEC-374/right_shift_combined.v                   ;         ;
+; right_rotate.v                         ; yes             ; User Verilog HDL File                                 ; C:/Users/789wi/Videos/ELEC-374/right_rotate.v                           ;         ;
+; reg32bit.v                             ; yes             ; User Verilog HDL File                                 ; C:/Users/789wi/Videos/ELEC-374/reg32bit.v                               ;         ;
+; P_G_block.v                            ; yes             ; User Verilog HDL File                                 ; C:/Users/789wi/Videos/ELEC-374/P_G_block.v                              ;         ;
+; NotOperation.v                         ; yes             ; User Verilog HDL File                                 ; C:/Users/789wi/Videos/ELEC-374/NotOperation.v                           ;         ;
+; nonRestoringDivisionPosiNeg.v          ; yes             ; User Verilog HDL File                                 ; C:/Users/789wi/Videos/ELEC-374/nonRestoringDivisionPosiNeg.v            ;         ;
+; Multiplexer.v                          ; yes             ; User Verilog HDL File                                 ; C:/Users/789wi/Videos/ELEC-374/Multiplexer.v                            ;         ;
+; MDRunit.v                              ; yes             ; User Verilog HDL File                                 ; C:/Users/789wi/Videos/ELEC-374/MDRunit.v                                ;         ;
+; logical_or.v                           ; yes             ; User Verilog HDL File                                 ; C:/Users/789wi/Videos/ELEC-374/logical_or.v                             ;         ;
+; logical_and.v                          ; yes             ; User Verilog HDL File                                 ; C:/Users/789wi/Videos/ELEC-374/logical_and.v                            ;         ;
+; left_shift.v                           ; yes             ; User Verilog HDL File                                 ; C:/Users/789wi/Videos/ELEC-374/left_shift.v                             ;         ;
+; left_rotate.v                          ; yes             ; User Verilog HDL File                                 ; C:/Users/789wi/Videos/ELEC-374/left_rotate.v                            ;         ;
+; Hierarchical_CLA.v                     ; yes             ; User Verilog HDL File                                 ; C:/Users/789wi/Videos/ELEC-374/Hierarchical_CLA.v                       ;         ;
+; encoder.v                              ; yes             ; User Verilog HDL File                                 ; C:/Users/789wi/Videos/ELEC-374/encoder.v                                ;         ;
+; dff_Q.v                                ; yes             ; User Verilog HDL File                                 ; C:/Users/789wi/Videos/ELEC-374/dff_Q.v                                  ;         ;
+; boothMultiplier.v                      ; yes             ; User Verilog HDL File                                 ; C:/Users/789wi/Videos/ELEC-374/boothMultiplier.v                        ;         ;
+; ALU.v                                  ; yes             ; User Verilog HDL File                                 ; C:/Users/789wi/Videos/ELEC-374/ALU.v                                    ;         ;
+; ALURegisters.v                         ; yes             ; User Verilog HDL File                                 ; C:/Users/789wi/Videos/ELEC-374/ALURegisters.v                           ;         ;
+; ControlUnitBus.v                       ; yes             ; User Verilog HDL File                                 ; C:/Users/789wi/Videos/ELEC-374/ControlUnitBus.v                         ;         ;
+; Memory.v                               ; yes             ; User Verilog HDL File                                 ; C:/Users/789wi/Videos/ELEC-374/Memory.v                                 ;         ;
+; altsyncram.tdf                         ; yes             ; Megafunction                                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altsyncram.tdf        ;         ;
+; stratix_ram_block.inc                  ; yes             ; Megafunction                                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/stratix_ram_block.inc ;         ;
+; lpm_mux.inc                            ; yes             ; Megafunction                                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_mux.inc           ;         ;
+; lpm_decode.inc                         ; yes             ; Megafunction                                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_decode.inc        ;         ;
+; aglobal130.inc                         ; yes             ; Megafunction                                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/aglobal130.inc        ;         ;
+; a_rdenreg.inc                          ; yes             ; Megafunction                                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/a_rdenreg.inc         ;         ;
+; altrom.inc                             ; yes             ; Megafunction                                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altrom.inc            ;         ;
+; altram.inc                             ; yes             ; Megafunction                                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altram.inc            ;         ;
+; altdpram.inc                           ; yes             ; Megafunction                                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altdpram.inc          ;         ;
+; db/altsyncram_nqg1.tdf                 ; yes             ; Auto-Generated Megafunction                           ; C:/Users/789wi/Videos/ELEC-374/db/altsyncram_nqg1.tdf                   ;         ;
+; db/phase1.ram0_memory_a0c6519c.hdl.mif ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; C:/Users/789wi/Videos/ELEC-374/db/phase1.ram0_memory_a0c6519c.hdl.mif   ;         ;
++----------------------------------------+-----------------+-------------------------------------------------------+-------------------------------------------------------------------------+---------+
+
+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimated Total logic elements              ; 9,579     ;
+;                                             ;           ;
+; Total combinational functions               ; 8944      ;
+; Logic element usage by number of LUT inputs ;           ;
+;     -- 4 input functions                    ; 2618      ;
+;     -- 3 input functions                    ; 5765      ;
+;     -- <=2 input functions                  ; 561       ;
+;                                             ;           ;
+; Logic elements by mode                      ;           ;
+;     -- normal mode                          ; 4885      ;
+;     -- arithmetic mode                      ; 4059      ;
+;                                             ;           ;
+; Total registers                             ; 931       ;
+;     -- Dedicated logic registers            ; 931       ;
+;     -- I/O registers                        ; 0         ;
+;                                             ;           ;
+; I/O pins                                    ; 67        ;
+; Total memory bits                           ; 16384     ;
+; Embedded Multiplier 9-bit elements          ; 0         ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 963       ;
+; Total fan-out                               ; 32188     ;
+; Average fan-out                             ; 3.21      ;
++---------------------------------------------+-----------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                ;
++----------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node                   ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                      ; Library Name ;
++----------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------+--------------+
+; |ControlUnitBus                              ; 8944 (72)         ; 931 (29)     ; 16384       ; 0            ; 0       ; 0         ; 67   ; 0            ; |ControlUnitBus                                                                                          ; work         ;
+;    |Bus:B|                                   ; 8872 (857)        ; 902 (33)     ; 16384       ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B                                                                                    ; work         ;
+;       |ALU:Logic|                            ; 7652 (707)        ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALU:Logic                                                                          ; work         ;
+;          |Hierarchical_CLA:add|              ; 104 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALU:Logic|Hierarchical_CLA:add                                                     ; work         ;
+;             |CLA_8inputs_updated:b2v_inst38| ; 32 (21)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALU:Logic|Hierarchical_CLA:add|CLA_8inputs_updated:b2v_inst38                      ; work         ;
+;                |P_G_block:b2v_inst35|        ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALU:Logic|Hierarchical_CLA:add|CLA_8inputs_updated:b2v_inst38|P_G_block:b2v_inst35 ; work         ;
+;                |P_G_block:b2v_inst36|        ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALU:Logic|Hierarchical_CLA:add|CLA_8inputs_updated:b2v_inst38|P_G_block:b2v_inst36 ; work         ;
+;                |P_G_block:b2v_inst37|        ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALU:Logic|Hierarchical_CLA:add|CLA_8inputs_updated:b2v_inst38|P_G_block:b2v_inst37 ; work         ;
+;                |P_G_block:b2v_inst38|        ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALU:Logic|Hierarchical_CLA:add|CLA_8inputs_updated:b2v_inst38|P_G_block:b2v_inst38 ; work         ;
+;                |P_G_block:b2v_inst39|        ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALU:Logic|Hierarchical_CLA:add|CLA_8inputs_updated:b2v_inst38|P_G_block:b2v_inst39 ; work         ;
+;                |P_G_block:b2v_inst40|        ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALU:Logic|Hierarchical_CLA:add|CLA_8inputs_updated:b2v_inst38|P_G_block:b2v_inst40 ; work         ;
+;                |P_G_block:b2v_inst41|        ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALU:Logic|Hierarchical_CLA:add|CLA_8inputs_updated:b2v_inst38|P_G_block:b2v_inst41 ; work         ;
+;             |CLA_8inputs_updated:b2v_inst39| ; 25 (19)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALU:Logic|Hierarchical_CLA:add|CLA_8inputs_updated:b2v_inst39                      ; work         ;
+;                |P_G_block:b2v_inst35|        ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALU:Logic|Hierarchical_CLA:add|CLA_8inputs_updated:b2v_inst39|P_G_block:b2v_inst35 ; work         ;
+;                |P_G_block:b2v_inst36|        ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALU:Logic|Hierarchical_CLA:add|CLA_8inputs_updated:b2v_inst39|P_G_block:b2v_inst36 ; work         ;
+;                |P_G_block:b2v_inst37|        ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALU:Logic|Hierarchical_CLA:add|CLA_8inputs_updated:b2v_inst39|P_G_block:b2v_inst37 ; work         ;
+;                |P_G_block:b2v_inst38|        ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALU:Logic|Hierarchical_CLA:add|CLA_8inputs_updated:b2v_inst39|P_G_block:b2v_inst38 ; work         ;
+;                |P_G_block:b2v_inst39|        ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALU:Logic|Hierarchical_CLA:add|CLA_8inputs_updated:b2v_inst39|P_G_block:b2v_inst39 ; work         ;
+;                |P_G_block:b2v_inst|          ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALU:Logic|Hierarchical_CLA:add|CLA_8inputs_updated:b2v_inst39|P_G_block:b2v_inst   ; work         ;
+;             |CLA_8inputs_updated:b2v_inst40| ; 23 (17)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALU:Logic|Hierarchical_CLA:add|CLA_8inputs_updated:b2v_inst40                      ; work         ;
+;                |P_G_block:b2v_inst35|        ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALU:Logic|Hierarchical_CLA:add|CLA_8inputs_updated:b2v_inst40|P_G_block:b2v_inst35 ; work         ;
+;                |P_G_block:b2v_inst36|        ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALU:Logic|Hierarchical_CLA:add|CLA_8inputs_updated:b2v_inst40|P_G_block:b2v_inst36 ; work         ;
+;                |P_G_block:b2v_inst37|        ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALU:Logic|Hierarchical_CLA:add|CLA_8inputs_updated:b2v_inst40|P_G_block:b2v_inst37 ; work         ;
+;                |P_G_block:b2v_inst38|        ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALU:Logic|Hierarchical_CLA:add|CLA_8inputs_updated:b2v_inst40|P_G_block:b2v_inst38 ; work         ;
+;                |P_G_block:b2v_inst40|        ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALU:Logic|Hierarchical_CLA:add|CLA_8inputs_updated:b2v_inst40|P_G_block:b2v_inst40 ; work         ;
+;                |P_G_block:b2v_inst|          ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALU:Logic|Hierarchical_CLA:add|CLA_8inputs_updated:b2v_inst40|P_G_block:b2v_inst   ; work         ;
+;             |CLA_8inputs_updated:b2v_inst4|  ; 24 (14)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALU:Logic|Hierarchical_CLA:add|CLA_8inputs_updated:b2v_inst4                       ; work         ;
+;                |P_G_block:b2v_inst35|        ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALU:Logic|Hierarchical_CLA:add|CLA_8inputs_updated:b2v_inst4|P_G_block:b2v_inst35  ; work         ;
+;                |P_G_block:b2v_inst36|        ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALU:Logic|Hierarchical_CLA:add|CLA_8inputs_updated:b2v_inst4|P_G_block:b2v_inst36  ; work         ;
+;                |P_G_block:b2v_inst37|        ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALU:Logic|Hierarchical_CLA:add|CLA_8inputs_updated:b2v_inst4|P_G_block:b2v_inst37  ; work         ;
+;                |P_G_block:b2v_inst38|        ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALU:Logic|Hierarchical_CLA:add|CLA_8inputs_updated:b2v_inst4|P_G_block:b2v_inst38  ; work         ;
+;                |P_G_block:b2v_inst39|        ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALU:Logic|Hierarchical_CLA:add|CLA_8inputs_updated:b2v_inst4|P_G_block:b2v_inst39  ; work         ;
+;                |P_G_block:b2v_inst40|        ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALU:Logic|Hierarchical_CLA:add|CLA_8inputs_updated:b2v_inst4|P_G_block:b2v_inst40  ; work         ;
+;                |P_G_block:b2v_inst41|        ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALU:Logic|Hierarchical_CLA:add|CLA_8inputs_updated:b2v_inst4|P_G_block:b2v_inst41  ; work         ;
+;                |P_G_block:b2v_inst|          ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALU:Logic|Hierarchical_CLA:add|CLA_8inputs_updated:b2v_inst4|P_G_block:b2v_inst    ; work         ;
+;          |Hierarchical_CLA:sub|              ; 17 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALU:Logic|Hierarchical_CLA:sub                                                     ; work         ;
+;             |CLA_8inputs_updated:b2v_inst38| ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALU:Logic|Hierarchical_CLA:sub|CLA_8inputs_updated:b2v_inst38                      ; work         ;
+;             |CLA_8inputs_updated:b2v_inst39| ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALU:Logic|Hierarchical_CLA:sub|CLA_8inputs_updated:b2v_inst39                      ; work         ;
+;             |CLA_8inputs_updated:b2v_inst40| ; 8 (8)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALU:Logic|Hierarchical_CLA:sub|CLA_8inputs_updated:b2v_inst40                      ; work         ;
+;             |CLA_8inputs_updated:b2v_inst4|  ; 4 (4)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALU:Logic|Hierarchical_CLA:sub|CLA_8inputs_updated:b2v_inst4                       ; work         ;
+;          |boothMultiplier:mul|               ; 3478 (3478)       ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALU:Logic|boothMultiplier:mul                                                      ; work         ;
+;          |logical_and:log_and|               ; 11 (11)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALU:Logic|logical_and:log_and                                                      ; work         ;
+;          |nonRestoringDivisionPosiNeg:div|   ; 3303 (3271)       ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALU:Logic|nonRestoringDivisionPosiNeg:div                                          ; work         ;
+;             |twoCompliment:two|              ; 32 (32)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALU:Logic|nonRestoringDivisionPosiNeg:div|twoCompliment:two                        ; work         ;
+;          |twoCompliment:neg|                 ; 32 (32)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALU:Logic|twoCompliment:neg                                                        ; work         ;
+;       |ALURegisters:LogicReg|                ; 20 (0)            ; 512 (0)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALURegisters:LogicReg                                                              ; work         ;
+;          |reg32bit:gr0|                      ; 5 (5)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALURegisters:LogicReg|reg32bit:gr0                                                 ; work         ;
+;          |reg32bit:gr10|                     ; 1 (1)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALURegisters:LogicReg|reg32bit:gr10                                                ; work         ;
+;          |reg32bit:gr11|                     ; 1 (1)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALURegisters:LogicReg|reg32bit:gr11                                                ; work         ;
+;          |reg32bit:gr12|                     ; 1 (1)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALURegisters:LogicReg|reg32bit:gr12                                                ; work         ;
+;          |reg32bit:gr13|                     ; 1 (1)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALURegisters:LogicReg|reg32bit:gr13                                                ; work         ;
+;          |reg32bit:gr14|                     ; 1 (1)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALURegisters:LogicReg|reg32bit:gr14                                                ; work         ;
+;          |reg32bit:gr15|                     ; 1 (1)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALURegisters:LogicReg|reg32bit:gr15                                                ; work         ;
+;          |reg32bit:gr1|                      ; 1 (1)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALURegisters:LogicReg|reg32bit:gr1                                                 ; work         ;
+;          |reg32bit:gr2|                      ; 1 (1)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALURegisters:LogicReg|reg32bit:gr2                                                 ; work         ;
+;          |reg32bit:gr3|                      ; 1 (1)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALURegisters:LogicReg|reg32bit:gr3                                                 ; work         ;
+;          |reg32bit:gr4|                      ; 1 (1)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALURegisters:LogicReg|reg32bit:gr4                                                 ; work         ;
+;          |reg32bit:gr5|                      ; 1 (1)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALURegisters:LogicReg|reg32bit:gr5                                                 ; work         ;
+;          |reg32bit:gr6|                      ; 1 (1)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALURegisters:LogicReg|reg32bit:gr6                                                 ; work         ;
+;          |reg32bit:gr7|                      ; 1 (1)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALURegisters:LogicReg|reg32bit:gr7                                                 ; work         ;
+;          |reg32bit:gr8|                      ; 1 (1)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALURegisters:LogicReg|reg32bit:gr8                                                 ; work         ;
+;          |reg32bit:gr9|                      ; 1 (1)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|ALURegisters:LogicReg|reg32bit:gr9                                                 ; work         ;
+;       |MDRunit:mdr|                          ; 33 (0)            ; 32 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|MDRunit:mdr                                                                        ; work         ;
+;          |reg32bit:MDR|                      ; 33 (33)           ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|MDRunit:mdr|reg32bit:MDR                                                           ; work         ;
+;       |Memory:memory|                        ; 80 (80)           ; 124 (124)    ; 16384       ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|Memory:memory                                                                      ; work         ;
+;          |altsyncram:RAMregisters_rtl_0|     ; 0 (0)             ; 0 (0)        ; 16384       ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|Memory:memory|altsyncram:RAMregisters_rtl_0                                        ; work         ;
+;             |altsyncram_nqg1:auto_generated| ; 0 (0)             ; 0 (0)        ; 16384       ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|Memory:memory|altsyncram:RAMregisters_rtl_0|altsyncram_nqg1:auto_generated         ; work         ;
+;       |Multiplexer:Mux|                      ; 85 (85)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|Multiplexer:Mux                                                                    ; work         ;
+;       |encoder:EnO|                          ; 8 (8)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|encoder:EnO                                                                        ; work         ;
+;       |reg32bit:CHI|                         ; 32 (32)           ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|reg32bit:CHI                                                                       ; work         ;
+;       |reg32bit:CLO|                         ; 0 (0)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|reg32bit:CLO                                                                       ; work         ;
+;       |reg32bit:IR|                          ; 10 (10)           ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|reg32bit:IR                                                                        ; work         ;
+;       |reg32bit:MAR|                         ; 9 (9)             ; 9 (9)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|reg32bit:MAR                                                                       ; work         ;
+;       |reg32bit:OutPort|                     ; 33 (33)           ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|reg32bit:OutPort                                                                   ; work         ;
+;       |reg32bit:PC|                          ; 33 (33)           ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|reg32bit:PC                                                                        ; work         ;
+;       |reg32bit:ZLO|                         ; 20 (20)           ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControlUnitBus|Bus:B|reg32bit:ZLO                                                                       ; work         ;
++----------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                                                   ;
++---------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+-------+----------------------------------------+
+; Name                                                                                        ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size  ; MIF                                    ;
++---------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+-------+----------------------------------------+
+; Bus:B|Memory:memory|altsyncram:RAMregisters_rtl_0|altsyncram_nqg1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 512          ; 32           ; 512          ; 32           ; 16384 ; db/Phase1.ram0_Memory_a0c6519c.hdl.mif ;
++---------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+-------+----------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                      ;
++-----------------------------------------------------+---------------------------+------------------------+
+; Latch Name                                          ; Latch Enable Signal       ; Free of Timing Hazards ;
++-----------------------------------------------------+---------------------------+------------------------+
+; Bus:B|ALU:Logic|regLO[0]                            ; Bus:B|ALU:Logic|regLO[31] ; yes                    ;
+; Bus:B|ALU:Logic|regLO[1]                            ; Bus:B|ALU:Logic|regLO[31] ; yes                    ;
+; Bus:B|ALU:Logic|regLO[2]                            ; Bus:B|ALU:Logic|regLO[31] ; yes                    ;
+; Bus:B|ALU:Logic|regLO[3]                            ; Bus:B|ALU:Logic|regLO[31] ; yes                    ;
+; Bus:B|ALU:Logic|regLO[4]                            ; Bus:B|ALU:Logic|regLO[31] ; yes                    ;
+; Bus:B|ALU:Logic|regLO[5]                            ; Bus:B|ALU:Logic|regLO[31] ; yes                    ;
+; Bus:B|ALU:Logic|regLO[6]                            ; Bus:B|ALU:Logic|regLO[31] ; yes                    ;
+; Bus:B|ALU:Logic|regLO[7]                            ; Bus:B|ALU:Logic|regLO[31] ; yes                    ;
+; Bus:B|ALU:Logic|regLO[8]                            ; Bus:B|ALU:Logic|regLO[31] ; yes                    ;
+; Bus:B|ALU:Logic|regLO[9]                            ; Bus:B|ALU:Logic|regLO[31] ; yes                    ;
+; Bus:B|ALU:Logic|regLO[10]                           ; Bus:B|ALU:Logic|regLO[31] ; yes                    ;
+; Bus:B|ALU:Logic|regLO[11]                           ; Bus:B|ALU:Logic|regLO[31] ; yes                    ;
+; Bus:B|ALU:Logic|regLO[12]                           ; Bus:B|ALU:Logic|regLO[31] ; yes                    ;
+; Bus:B|ALU:Logic|regLO[13]                           ; Bus:B|ALU:Logic|regLO[31] ; yes                    ;
+; Bus:B|ALU:Logic|regLO[14]                           ; Bus:B|ALU:Logic|regLO[31] ; yes                    ;
+; Bus:B|ALU:Logic|regLO[15]                           ; Bus:B|ALU:Logic|regLO[31] ; yes                    ;
+; Bus:B|ALU:Logic|regLO[16]                           ; Bus:B|ALU:Logic|regLO[31] ; yes                    ;
+; Bus:B|ALU:Logic|regLO[17]                           ; Bus:B|ALU:Logic|regLO[31] ; yes                    ;
+; Bus:B|ALU:Logic|regLO[18]                           ; Bus:B|ALU:Logic|regLO[31] ; yes                    ;
+; Bus:B|ALU:Logic|regLO[19]                           ; Bus:B|ALU:Logic|regLO[31] ; yes                    ;
+; Bus:B|ALU:Logic|regLO[20]                           ; Bus:B|ALU:Logic|regLO[31] ; yes                    ;
+; Bus:B|ALU:Logic|regLO[21]                           ; Bus:B|ALU:Logic|regLO[31] ; yes                    ;
+; Bus:B|ALU:Logic|regLO[22]                           ; Bus:B|ALU:Logic|regLO[31] ; yes                    ;
+; Bus:B|ALU:Logic|regLO[23]                           ; Bus:B|ALU:Logic|regLO[31] ; yes                    ;
+; Bus:B|ALU:Logic|regLO[24]                           ; Bus:B|ALU:Logic|regLO[31] ; yes                    ;
+; Bus:B|ALU:Logic|regLO[25]                           ; Bus:B|ALU:Logic|regLO[31] ; yes                    ;
+; Bus:B|ALU:Logic|regLO[26]                           ; Bus:B|ALU:Logic|regLO[31] ; yes                    ;
+; Bus:B|ALU:Logic|regLO[27]                           ; Bus:B|ALU:Logic|regLO[31] ; yes                    ;
+; Bus:B|ALU:Logic|regLO[28]                           ; Bus:B|ALU:Logic|regLO[31] ; yes                    ;
+; Bus:B|ALU:Logic|regLO[29]                           ; Bus:B|ALU:Logic|regLO[31] ; yes                    ;
+; Bus:B|ALU:Logic|regLO[30]                           ; Bus:B|ALU:Logic|regLO[31] ; yes                    ;
+; Bus:B|ALU:Logic|regLO[31]                           ; Bus:B|ALU:Logic|regLO[31] ; yes                    ;
+; Bus:B|encoder:EnO|d[2]                              ; GND                       ; yes                    ;
+; Bus:B|encoder:EnO|d[0]                              ; GND                       ; yes                    ;
+; Bus:B|encoder:EnO|d[1]                              ; GND                       ; yes                    ;
+; Bus:B|MemWrite                                      ; VCC                       ; yes                    ;
+; Bus:B|ALU:Logic|regHI[0]                            ; Bus:B|ALU:Logic|regHI[31] ; yes                    ;
+; Bus:B|ALU:Logic|regHI[31]                           ; Bus:B|ALU:Logic|regHI[31] ; yes                    ;
+; Bus:B|ALU:Logic|regHI[30]                           ; Bus:B|ALU:Logic|regHI[31] ; yes                    ;
+; Bus:B|ALU:Logic|regHI[29]                           ; Bus:B|ALU:Logic|regHI[31] ; yes                    ;
+; Bus:B|ALU:Logic|regHI[28]                           ; Bus:B|ALU:Logic|regHI[31] ; yes                    ;
+; Bus:B|ALU:Logic|regHI[27]                           ; Bus:B|ALU:Logic|regHI[31] ; yes                    ;
+; Bus:B|ALU:Logic|regHI[26]                           ; Bus:B|ALU:Logic|regHI[31] ; yes                    ;
+; Bus:B|ALU:Logic|regHI[25]                           ; Bus:B|ALU:Logic|regHI[31] ; yes                    ;
+; Bus:B|ALU:Logic|regHI[24]                           ; Bus:B|ALU:Logic|regHI[31] ; yes                    ;
+; Bus:B|ALU:Logic|regHI[23]                           ; Bus:B|ALU:Logic|regHI[31] ; yes                    ;
+; Bus:B|ALU:Logic|regHI[22]                           ; Bus:B|ALU:Logic|regHI[31] ; yes                    ;
+; Bus:B|ALU:Logic|regHI[21]                           ; Bus:B|ALU:Logic|regHI[31] ; yes                    ;
+; Bus:B|ALU:Logic|regHI[20]                           ; Bus:B|ALU:Logic|regHI[31] ; yes                    ;
+; Bus:B|ALU:Logic|regHI[19]                           ; Bus:B|ALU:Logic|regHI[31] ; yes                    ;
+; Bus:B|ALU:Logic|regHI[18]                           ; Bus:B|ALU:Logic|regHI[31] ; yes                    ;
+; Bus:B|ALU:Logic|regHI[17]                           ; Bus:B|ALU:Logic|regHI[31] ; yes                    ;
+; Bus:B|ALU:Logic|regHI[16]                           ; Bus:B|ALU:Logic|regHI[31] ; yes                    ;
+; Bus:B|ALU:Logic|regHI[15]                           ; Bus:B|ALU:Logic|regHI[31] ; yes                    ;
+; Bus:B|ALU:Logic|regHI[14]                           ; Bus:B|ALU:Logic|regHI[31] ; yes                    ;
+; Bus:B|ALU:Logic|regHI[13]                           ; Bus:B|ALU:Logic|regHI[31] ; yes                    ;
+; Bus:B|ALU:Logic|regHI[12]                           ; Bus:B|ALU:Logic|regHI[31] ; yes                    ;
+; Bus:B|ALU:Logic|regHI[11]                           ; Bus:B|ALU:Logic|regHI[31] ; yes                    ;
+; Bus:B|ALU:Logic|regHI[10]                           ; Bus:B|ALU:Logic|regHI[31] ; yes                    ;
+; Bus:B|ALU:Logic|regHI[9]                            ; Bus:B|ALU:Logic|regHI[31] ; yes                    ;
+; Bus:B|ALU:Logic|regHI[8]                            ; Bus:B|ALU:Logic|regHI[31] ; yes                    ;
+; Bus:B|ALU:Logic|regHI[7]                            ; Bus:B|ALU:Logic|regHI[31] ; yes                    ;
+; Bus:B|ALU:Logic|regHI[6]                            ; Bus:B|ALU:Logic|regHI[31] ; yes                    ;
+; Bus:B|ALU:Logic|regHI[5]                            ; Bus:B|ALU:Logic|regHI[31] ; yes                    ;
+; Bus:B|ALU:Logic|regHI[4]                            ; Bus:B|ALU:Logic|regHI[31] ; yes                    ;
+; Bus:B|ALU:Logic|regHI[3]                            ; Bus:B|ALU:Logic|regHI[31] ; yes                    ;
+; Bus:B|ALU:Logic|regHI[2]                            ; Bus:B|ALU:Logic|regHI[31] ; yes                    ;
+; Bus:B|ALU:Logic|regHI[1]                            ; Bus:B|ALU:Logic|regHI[31] ; yes                    ;
+; Number of user-specified and inferred latches = 68  ;                           ;                        ;
++-----------------------------------------------------+---------------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++----------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                               ;
++-----------------------------------------+----------------------------------------+
+; Register name                           ; Reason for Removal                     ;
++-----------------------------------------+----------------------------------------+
+; Outports                                ; Stuck at GND due to stuck port data_in ;
+; ALUen                                   ; Stuck at VCC due to stuck port data_in ;
+; BAOut                                   ; Stuck at GND due to stuck port data_in ;
+; R0out                                   ; Stuck at GND due to stuck port data_in ;
+; R1out                                   ; Stuck at GND due to stuck port data_in ;
+; R2out                                   ; Stuck at GND due to stuck port data_in ;
+; R3out                                   ; Stuck at GND due to stuck port data_in ;
+; R4out                                   ; Stuck at GND due to stuck port data_in ;
+; R5out                                   ; Stuck at GND due to stuck port data_in ;
+; R6out                                   ; Stuck at GND due to stuck port data_in ;
+; R7out                                   ; Stuck at GND due to stuck port data_in ;
+; R8out                                   ; Stuck at GND due to stuck port data_in ;
+; R9out                                   ; Stuck at GND due to stuck port data_in ;
+; R10out                                  ; Stuck at GND due to stuck port data_in ;
+; R11out                                  ; Stuck at GND due to stuck port data_in ;
+; R12out                                  ; Stuck at GND due to stuck port data_in ;
+; R13out                                  ; Stuck at GND due to stuck port data_in ;
+; R14out                                  ; Stuck at GND due to stuck port data_in ;
+; R15out                                  ; Stuck at GND due to stuck port data_in ;
+; HIout                                   ; Stuck at GND due to stuck port data_in ;
+; LOout                                   ; Stuck at GND due to stuck port data_in ;
+; ZHIout                                  ; Stuck at GND due to stuck port data_in ;
+; InportOut                               ; Stuck at GND due to stuck port data_in ;
+; HIins                                   ; Stuck at GND due to stuck port data_in ;
+; LOins                                   ; Stuck at GND due to stuck port data_in ;
+; ZHIins                                  ; Stuck at GND due to stuck port data_in ;
+; PCins                                   ; Stuck at GND due to stuck port data_in ;
+; Inports                                 ; Stuck at GND due to stuck port data_in ;
+; Bus:B|reg32bit:InPort|r[1..31]          ; Merged with Bus:B|reg32bit:InPort|r[0] ;
+; Bus:B|reg32bit:RegHi|r[0..31]           ; Merged with Bus:B|reg32bit:InPort|r[0] ;
+; Bus:B|reg32bit:RegLo|r[0..31]           ; Merged with Bus:B|reg32bit:InPort|r[0] ;
+; Bus:B|reg32bit:ZHI|r[0..31]             ; Merged with Bus:B|reg32bit:InPort|r[0] ;
+; MDRout                                  ; Merged with IRins                      ;
+; MDRins                                  ; Merged with MDRRead                    ;
+; MARins                                  ; Merged with AddressCounterEnable       ;
+; PCout                                   ; Merged with AddressCounterEnable       ;
+; Bus:B|reg32bit:InPort|r[0]              ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 160 ;                                        ;
++-----------------------------------------+----------------------------------------+
+
+
++------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                        ;
++---------------+---------------------------+----------------------------------------+
+; Register name ; Reason for Removal        ; Registers Removed due to This Register ;
++---------------+---------------------------+----------------------------------------+
+; Inports       ; Stuck at GND              ; Bus:B|reg32bit:InPort|r[0]             ;
+;               ; due to stuck port data_in ;                                        ;
++---------------+---------------------------+----------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 931   ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 64    ;
+; Number of registers using Asynchronous Clear ; 7     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 692   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-------------------------------------------------------------+
+; Inverted Register Statistics                                ;
++---------------------------------------------------+---------+
+; Inverted Register                                 ; Fan out ;
++---------------------------------------------------+---------+
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[29] ; 1       ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[30] ; 1       ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[31] ; 1       ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[33] ; 1       ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[35] ; 1       ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[37] ; 1       ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[39] ; 1       ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[41] ; 1       ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[43] ; 1       ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[45] ; 1       ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[47] ; 1       ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[49] ; 1       ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[51] ; 1       ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[53] ; 1       ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[55] ; 1       ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[57] ; 1       ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[59] ; 1       ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[61] ; 1       ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[63] ; 1       ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[65] ; 1       ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[67] ; 1       ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[69] ; 1       ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[71] ; 1       ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[73] ; 1       ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[74] ; 1       ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[75] ; 1       ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[77] ; 1       ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[79] ; 1       ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[81] ; 1       ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[83] ; 1       ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[85] ; 1       ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[86] ; 1       ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[87] ; 1       ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[89] ; 1       ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[90] ; 1       ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[91] ; 1       ;
+; Total number of inverted registers = 36           ;         ;
++---------------------------------------------------+---------+
+
+
++--------------------------------------------------------------------------------------------+
+; Registers Added for RAM Pass-Through Logic                                                 ;
++---------------------------------------------------+----------------------------------------+
+; Register Name                                     ; RAM Name                               ;
++---------------------------------------------------+----------------------------------------+
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[0]  ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[1]  ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[2]  ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[3]  ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[4]  ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[5]  ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[6]  ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[7]  ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[8]  ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[9]  ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[10] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[11] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[12] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[13] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[14] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[15] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[16] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[17] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[18] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[19] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[20] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[21] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[22] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[23] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[24] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[25] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[26] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[27] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[28] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[29] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[30] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[31] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[32] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[33] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[34] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[35] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[36] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[37] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[38] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[39] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[40] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[41] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[42] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[43] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[44] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[45] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[46] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[47] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[48] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[49] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[50] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[51] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[52] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[53] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[54] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[55] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[56] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[57] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[58] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[59] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[60] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[61] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[62] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[63] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[64] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[65] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[66] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[67] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[68] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[69] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[70] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[71] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[72] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[73] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[74] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[75] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[76] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[77] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[78] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[79] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[80] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[81] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[82] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[83] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[84] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[85] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[86] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[87] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[88] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[89] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[90] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
+; Bus:B|Memory:memory|RAMregisters_rtl_0_bypass[91] ; Bus:B|Memory:memory|RAMregisters_rtl_0 ;
++---------------------------------------------------+----------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------+
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |ControlUnitBus|Bus:B|reg32bit:OutPort|r[1]                     ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |ControlUnitBus|Bus:B|reg32bit:IR|r[12]                         ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |ControlUnitBus|Bus:B|reg32bit:PC|r[5]                          ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |ControlUnitBus|Bus:B|MDRunit:mdr|reg32bit:MDR|r[15]            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |ControlUnitBus|Bus:B|reg32bit:ZLO|r[16]                        ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |ControlUnitBus|Bus:B|ALURegisters:LogicReg|reg32bit:gr0|r[21]  ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |ControlUnitBus|Bus:B|ALURegisters:LogicReg|reg32bit:gr8|r[6]   ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |ControlUnitBus|Bus:B|ALURegisters:LogicReg|reg32bit:gr4|r[6]   ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |ControlUnitBus|Bus:B|ALURegisters:LogicReg|reg32bit:gr12|r[6]  ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |ControlUnitBus|Bus:B|ALURegisters:LogicReg|reg32bit:gr2|r[15]  ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |ControlUnitBus|Bus:B|ALURegisters:LogicReg|reg32bit:gr10|r[10] ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |ControlUnitBus|Bus:B|ALURegisters:LogicReg|reg32bit:gr6|r[21]  ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |ControlUnitBus|Bus:B|ALURegisters:LogicReg|reg32bit:gr14|r[14] ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |ControlUnitBus|Bus:B|ALURegisters:LogicReg|reg32bit:gr1|r[26]  ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |ControlUnitBus|Bus:B|ALURegisters:LogicReg|reg32bit:gr9|r[25]  ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |ControlUnitBus|Bus:B|ALURegisters:LogicReg|reg32bit:gr5|r[20]  ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |ControlUnitBus|Bus:B|ALURegisters:LogicReg|reg32bit:gr13|r[24] ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |ControlUnitBus|Bus:B|ALURegisters:LogicReg|reg32bit:gr3|r[12]  ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |ControlUnitBus|Bus:B|ALURegisters:LogicReg|reg32bit:gr11|r[23] ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |ControlUnitBus|Bus:B|ALURegisters:LogicReg|reg32bit:gr7|r[19]  ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |ControlUnitBus|Bus:B|ALURegisters:LogicReg|reg32bit:gr15|r[19] ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; Yes        ; |ControlUnitBus|Bus:B|PCIN[7]                                   ;
+; 9:1                ; 3 bits    ; 18 LEs        ; 15 LEs               ; 3 LEs                  ; Yes        ; |ControlUnitBus|PresentState[2]                                 ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; No         ; |ControlUnitBus|Bus:B|CLoIn[0]                                  ;
+; 3:1                ; 9 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |ControlUnitBus|Bus:B|reg32bit:MAR|r                            ;
+; 8:1                ; 32 bits   ; 160 LEs       ; 96 LEs               ; 64 LEs                 ; No         ; |ControlUnitBus|Bus:B|Multiplexer:Mux|BusMuxOutTemp             ;
+; 5:1                ; 30 bits   ; 90 LEs        ; 90 LEs               ; 0 LEs                  ; No         ; |ControlUnitBus|Bus:B|ALU:Logic|boothMultiplier:mul|ans         ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 6 LEs                ; 4 LEs                  ; No         ; |ControlUnitBus|Bus:B|ALU:Logic|boothMultiplier:mul|ans         ;
+; 8:1                ; 29 bits   ; 145 LEs       ; 87 LEs               ; 58 LEs                 ; No         ; |ControlUnitBus|Bus:B|ALU:Logic|boothMultiplier:mul|ans         ;
+; 8:1                ; 30 bits   ; 150 LEs       ; 90 LEs               ; 60 LEs                 ; No         ; |ControlUnitBus|Bus:B|ALU:Logic|boothMultiplier:mul|ans         ;
+; 8:1                ; 30 bits   ; 150 LEs       ; 90 LEs               ; 60 LEs                 ; No         ; |ControlUnitBus|Bus:B|ALU:Logic|boothMultiplier:mul|ans         ;
+; 8:1                ; 30 bits   ; 150 LEs       ; 90 LEs               ; 60 LEs                 ; No         ; |ControlUnitBus|Bus:B|ALU:Logic|boothMultiplier:mul|ans         ;
+; 8:1                ; 30 bits   ; 150 LEs       ; 90 LEs               ; 60 LEs                 ; No         ; |ControlUnitBus|Bus:B|ALU:Logic|boothMultiplier:mul|ans         ;
+; 8:1                ; 30 bits   ; 150 LEs       ; 90 LEs               ; 60 LEs                 ; No         ; |ControlUnitBus|Bus:B|ALU:Logic|boothMultiplier:mul|ans         ;
+; 8:1                ; 30 bits   ; 150 LEs       ; 90 LEs               ; 60 LEs                 ; No         ; |ControlUnitBus|Bus:B|ALU:Logic|boothMultiplier:mul|ans         ;
+; 8:1                ; 30 bits   ; 150 LEs       ; 90 LEs               ; 60 LEs                 ; No         ; |ControlUnitBus|Bus:B|ALU:Logic|boothMultiplier:mul|ans         ;
+; 8:1                ; 30 bits   ; 150 LEs       ; 90 LEs               ; 60 LEs                 ; No         ; |ControlUnitBus|Bus:B|ALU:Logic|boothMultiplier:mul|ans         ;
+; 8:1                ; 30 bits   ; 150 LEs       ; 90 LEs               ; 60 LEs                 ; No         ; |ControlUnitBus|Bus:B|ALU:Logic|boothMultiplier:mul|ans         ;
+; 8:1                ; 30 bits   ; 150 LEs       ; 90 LEs               ; 60 LEs                 ; No         ; |ControlUnitBus|Bus:B|ALU:Logic|boothMultiplier:mul|ans         ;
+; 8:1                ; 30 bits   ; 150 LEs       ; 90 LEs               ; 60 LEs                 ; No         ; |ControlUnitBus|Bus:B|ALU:Logic|boothMultiplier:mul|ans         ;
+; 8:1                ; 30 bits   ; 150 LEs       ; 90 LEs               ; 60 LEs                 ; No         ; |ControlUnitBus|Bus:B|ALU:Logic|boothMultiplier:mul|ans         ;
+; 8:1                ; 30 bits   ; 150 LEs       ; 90 LEs               ; 60 LEs                 ; No         ; |ControlUnitBus|Bus:B|ALU:Logic|boothMultiplier:mul|ans         ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 320 LEs              ; 0 LEs                  ; No         ; |ControlUnitBus|Bus:B|regB[2]                                   ;
+; 21:1               ; 13 bits   ; 182 LEs       ; 156 LEs              ; 26 LEs                 ; No         ; |ControlUnitBus|Bus:B|regA[30]                                  ;
+; 21:1               ; 19 bits   ; 266 LEs       ; 266 LEs              ; 0 LEs                  ; No         ; |ControlUnitBus|Bus:B|regA[16]                                  ;
+; 14:1               ; 29 bits   ; 261 LEs       ; 174 LEs              ; 87 LEs                 ; No         ; |ControlUnitBus|Bus:B|ALU:Logic|regHI[29]                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------+
+; Source assignments for Bus:B|Memory:memory|altsyncram:RAMregisters_rtl_0|altsyncram_nqg1:auto_generated ;
++---------------------------------+--------------------+------+-------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                        ;
++---------------------------------+--------------------+------+-------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                         ;
++---------------------------------+--------------------+------+-------------------------------------------+
+
+
++--------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |ControlUnitBus ;
++----------------+-------+-------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                  ;
++----------------+-------+-------------------------------------------------------+
+; ResetState     ; 000   ; Unsigned Binary                                       ;
+; T0             ; 001   ; Unsigned Binary                                       ;
+; T1             ; 010   ; Unsigned Binary                                       ;
+; T2             ; 011   ; Unsigned Binary                                       ;
+; T3             ; 100   ; Unsigned Binary                                       ;
+; T4             ; 101   ; Unsigned Binary                                       ;
+; T5             ; 110   ; Unsigned Binary                                       ;
+; TempState      ; 111   ; Unsigned Binary                                       ;
++----------------+-------+-------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: Bus:B|Memory:memory|altsyncram:RAMregisters_rtl_0 ;
++------------------------------------+----------------------------------------+----------------------+
+; Parameter Name                     ; Value                                  ; Type                 ;
++------------------------------------+----------------------------------------+----------------------+
+; BYTE_SIZE_BLOCK                    ; 8                                      ; Untyped              ;
+; AUTO_CARRY_CHAINS                  ; ON                                     ; AUTO_CARRY           ;
+; IGNORE_CARRY_BUFFERS               ; OFF                                    ; IGNORE_CARRY         ;
+; AUTO_CASCADE_CHAINS                ; ON                                     ; AUTO_CASCADE         ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                                    ; IGNORE_CASCADE       ;
+; WIDTH_BYTEENA                      ; 1                                      ; Untyped              ;
+; OPERATION_MODE                     ; DUAL_PORT                              ; Untyped              ;
+; WIDTH_A                            ; 32                                     ; Untyped              ;
+; WIDTHAD_A                          ; 9                                      ; Untyped              ;
+; NUMWORDS_A                         ; 512                                    ; Untyped              ;
+; OUTDATA_REG_A                      ; UNREGISTERED                           ; Untyped              ;
+; ADDRESS_ACLR_A                     ; NONE                                   ; Untyped              ;
+; OUTDATA_ACLR_A                     ; NONE                                   ; Untyped              ;
+; WRCONTROL_ACLR_A                   ; NONE                                   ; Untyped              ;
+; INDATA_ACLR_A                      ; NONE                                   ; Untyped              ;
+; BYTEENA_ACLR_A                     ; NONE                                   ; Untyped              ;
+; WIDTH_B                            ; 32                                     ; Untyped              ;
+; WIDTHAD_B                          ; 9                                      ; Untyped              ;
+; NUMWORDS_B                         ; 512                                    ; Untyped              ;
+; INDATA_REG_B                       ; CLOCK1                                 ; Untyped              ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1                                 ; Untyped              ;
+; RDCONTROL_REG_B                    ; CLOCK1                                 ; Untyped              ;
+; ADDRESS_REG_B                      ; CLOCK0                                 ; Untyped              ;
+; OUTDATA_REG_B                      ; UNREGISTERED                           ; Untyped              ;
+; BYTEENA_REG_B                      ; CLOCK1                                 ; Untyped              ;
+; INDATA_ACLR_B                      ; NONE                                   ; Untyped              ;
+; WRCONTROL_ACLR_B                   ; NONE                                   ; Untyped              ;
+; ADDRESS_ACLR_B                     ; NONE                                   ; Untyped              ;
+; OUTDATA_ACLR_B                     ; NONE                                   ; Untyped              ;
+; RDCONTROL_ACLR_B                   ; NONE                                   ; Untyped              ;
+; BYTEENA_ACLR_B                     ; NONE                                   ; Untyped              ;
+; WIDTH_BYTEENA_A                    ; 1                                      ; Untyped              ;
+; WIDTH_BYTEENA_B                    ; 1                                      ; Untyped              ;
+; RAM_BLOCK_TYPE                     ; AUTO                                   ; Untyped              ;
+; BYTE_SIZE                          ; 8                                      ; Untyped              ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                              ; Untyped              ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ                   ; Untyped              ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ                   ; Untyped              ;
+; INIT_FILE                          ; db/Phase1.ram0_Memory_a0c6519c.hdl.mif ; Untyped              ;
+; INIT_FILE_LAYOUT                   ; PORT_A                                 ; Untyped              ;
+; MAXIMUM_DEPTH                      ; 0                                      ; Untyped              ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL                                 ; Untyped              ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL                                 ; Untyped              ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL                                 ; Untyped              ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL                                 ; Untyped              ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN                        ; Untyped              ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN                        ; Untyped              ;
+; ENABLE_ECC                         ; FALSE                                  ; Untyped              ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                                  ; Untyped              ;
+; WIDTH_ECCSTATUS                    ; 3                                      ; Untyped              ;
+; DEVICE_FAMILY                      ; Cyclone III                            ; Untyped              ;
+; CBXI_PARAMETER                     ; altsyncram_nqg1                        ; Untyped              ;
++------------------------------------+----------------------------------------+----------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                                              ;
++-------------------------------------------+---------------------------------------------------+
+; Name                                      ; Value                                             ;
++-------------------------------------------+---------------------------------------------------+
+; Number of entity instances                ; 1                                                 ;
+; Entity Instance                           ; Bus:B|Memory:memory|altsyncram:RAMregisters_rtl_0 ;
+;     -- OPERATION_MODE                     ; DUAL_PORT                                         ;
+;     -- WIDTH_A                            ; 32                                                ;
+;     -- NUMWORDS_A                         ; 512                                               ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                      ;
+;     -- WIDTH_B                            ; 32                                                ;
+;     -- NUMWORDS_B                         ; 512                                               ;
+;     -- ADDRESS_REG_B                      ; CLOCK0                                            ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                      ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                              ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                         ;
++-------------------------------------------+---------------------------------------------------+
+
+
++------------------------------------------------------------------+
+; Port Connectivity Checks: "Bus:B|ALU:Logic|Hierarchical_CLA:sub" ;
++--------+-------+----------+--------------------------------------+
+; Port   ; Type  ; Severity ; Details                              ;
++--------+-------+----------+--------------------------------------+
+; Select ; Input ; Info     ; Stuck at VCC                         ;
++--------+-------+----------+--------------------------------------+
+
+
++------------------------------------------------------------------+
+; Port Connectivity Checks: "Bus:B|ALU:Logic|Hierarchical_CLA:add" ;
++--------+-------+----------+--------------------------------------+
+; Port   ; Type  ; Severity ; Details                              ;
++--------+-------+----------+--------------------------------------+
+; Select ; Input ; Info     ; Stuck at GND                         ;
++--------+-------+----------+--------------------------------------+
+
+
++------------------------------------------------------------------+
+; Port Connectivity Checks: "Bus:B|ALU:Logic|right_rotate:rotateR" ;
++------+-------+----------+----------------------------------------+
+; Port ; Type  ; Severity ; Details                                ;
++------+-------+----------+----------------------------------------+
+; clk  ; Input ; Info     ; Stuck at VCC                           ;
+; clr  ; Input ; Info     ; Stuck at GND                           ;
++------+-------+----------+----------------------------------------+
+
+
++-----------------------------------------------------------------+
+; Port Connectivity Checks: "Bus:B|ALU:Logic|left_rotate:rotateL" ;
++------+-------+----------+---------------------------------------+
+; Port ; Type  ; Severity ; Details                               ;
++------+-------+----------+---------------------------------------+
+; clk  ; Input ; Info     ; Stuck at VCC                          ;
+; clr  ; Input ; Info     ; Stuck at GND                          ;
++------+-------+----------+---------------------------------------+
+
+
++-----------------------------------------------------------------------+
+; Port Connectivity Checks: "Bus:B|ALU:Logic|right_shift_combined:SHRA" ;
++--------+-------+----------+-------------------------------------------+
+; Port   ; Type  ; Severity ; Details                                   ;
++--------+-------+----------+-------------------------------------------+
+; clk    ; Input ; Info     ; Stuck at VCC                              ;
+; clr    ; Input ; Info     ; Stuck at GND                              ;
+; select ; Input ; Info     ; Stuck at VCC                              ;
++--------+-------+----------+-------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Bus:B|ALU:Logic|right_shift_combined:SHRL|dff_Q:b2v_inst35"                         ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Q    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Bus:B|ALU:Logic|right_shift_combined:SHRL|mux2_1:b2v_inst1" ;
++------+-------+----------+--------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                      ;
++------+-------+----------+--------------------------------------------------------------+
+; a    ; Input ; Info     ; Stuck at GND                                                 ;
++------+-------+----------+--------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------+
+; Port Connectivity Checks: "Bus:B|ALU:Logic|right_shift_combined:SHRL" ;
++--------+-------+----------+-------------------------------------------+
+; Port   ; Type  ; Severity ; Details                                   ;
++--------+-------+----------+-------------------------------------------+
+; clk    ; Input ; Info     ; Stuck at VCC                              ;
+; clr    ; Input ; Info     ; Stuck at GND                              ;
+; select ; Input ; Info     ; Stuck at GND                              ;
++--------+-------+----------+-------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Bus:B|ALU:Logic|left_shift:SHL|dff_Q:b2v_inst71"                                    ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Q    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------+
+; Port Connectivity Checks: "Bus:B|ALU:Logic|left_shift:SHL" ;
++------+-------+----------+----------------------------------+
+; Port ; Type  ; Severity ; Details                          ;
++------+-------+----------+----------------------------------+
+; clk  ; Input ; Info     ; Stuck at VCC                     ;
+; clr  ; Input ; Info     ; Stuck at GND                     ;
++------+-------+----------+----------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Bus:B|reg32bit:MAR"                                                                     ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+; Port     ; Type   ; Severity ; Details                                                                             ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+; q[31..9] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Bus:B|reg32bit:RA"                                                                  ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; q    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Bus:B"                                                                                       ;
++---------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port          ; Type   ; Severity ; Details                                                                             ;
++---------------+--------+----------+-------------------------------------------------------------------------------------+
+; IROut[31..27] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; IROut[22..0]  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++---------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:26     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Full Version
+    Info: Processing started: Mon Apr 03 16:31:00 2023
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Phase1 -c Phase1
+Info (11104): Parallel Compilation has detected 8 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 4 of the 4 physical processors detected instead.
+Info (12021): Found 1 design units, including 1 entities, in source file strlditb.v
+    Info (12023): Found entity 1: StrLdiTB
+Info (12021): Found 1 design units, including 1 entities, in source file ram.v
+    Info (12023): Found entity 1: RAM
+Info (12021): Found 1 design units, including 1 entities, in source file add_tb.v
+    Info (12023): Found entity 1: ADD_tb
+Info (12021): Found 1 design units, including 1 entities, in source file and_tb.v
+    Info (12023): Found entity 1: AND_tb
+Info (12021): Found 1 design units, including 1 entities, in source file div_tb.v
+    Info (12023): Found entity 1: DIV_tb
+Info (12021): Found 1 design units, including 1 entities, in source file mul_tb.v
+    Info (12023): Found entity 1: MUL_tb
+Info (12021): Found 1 design units, including 1 entities, in source file neg_tb.v
+    Info (12023): Found entity 1: NEG_tb
+Info (12021): Found 1 design units, including 1 entities, in source file or_tb.v
+    Info (12023): Found entity 1: OR_tb
+Info (12021): Found 1 design units, including 1 entities, in source file not_tb.v
+    Info (12023): Found entity 1: NOT_tb
+Info (12021): Found 1 design units, including 1 entities, in source file rol_tb.v
+    Info (12023): Found entity 1: ROL_tb
+Info (12021): Found 1 design units, including 1 entities, in source file ror_tb.v
+    Info (12023): Found entity 1: ROR_tb
+Info (12021): Found 1 design units, including 1 entities, in source file shl_tb.v
+    Info (12023): Found entity 1: SHL_tb
+Info (12021): Found 1 design units, including 1 entities, in source file shra_tb.v
+    Info (12023): Found entity 1: SHRA_tb
+Info (12021): Found 1 design units, including 1 entities, in source file sub_tb.v
+    Info (12023): Found entity 1: SUB_tb
+Info (12021): Found 1 design units, including 1 entities, in source file shr_tb.v
+    Info (12023): Found entity 1: SHR_tb
+Info (12021): Found 1 design units, including 1 entities, in source file bus.v
+    Info (12023): Found entity 1: Bus
+Info (12021): Found 1 design units, including 1 entities, in source file cla_8inputs_updated.v
+    Info (12023): Found entity 1: CLA_8inputs_updated
+Info (12021): Found 1 design units, including 1 entities, in source file mux2_1.v
+    Info (12023): Found entity 1: mux2_1
+Info (12021): Found 2 design units, including 2 entities, in source file myencoder32_enc8b10b.v
+    Info (12023): Found entity 1: myencoder32_enc8b10b
+    Info (12023): Found entity 2: myencoder32_encoding_lut
+Info (12021): Found 1 design units, including 1 entities, in source file myencoder32.v
+    Info (12023): Found entity 1: myencoder32
+Info (12021): Found 1 design units, including 1 entities, in source file twocompliment.v
+    Info (12023): Found entity 1: twoCompliment
+Info (12021): Found 1 design units, including 1 entities, in source file testbenchmultiplier.v
+    Info (12023): Found entity 1: TestbenchMultiplier
+Info (12021): Found 1 design units, including 1 entities, in source file testbenchcontrolunit.v
+    Info (12023): Found entity 1: TestbenchControlUnit
+Info (12021): Found 1 design units, including 1 entities, in source file ripple_carry_adder.v
+    Info (12023): Found entity 1: ripple_carry_adder
+Info (12021): Found 1 design units, including 1 entities, in source file right_shift_combined.v
+    Info (12023): Found entity 1: right_shift_combined
+Info (12021): Found 1 design units, including 1 entities, in source file right_rotate.v
+    Info (12023): Found entity 1: right_rotate
+Info (12021): Found 1 design units, including 1 entities, in source file reg32bit.v
+    Info (12023): Found entity 1: reg32bit
+Info (12021): Found 1 design units, including 1 entities, in source file p_g_block.v
+    Info (12023): Found entity 1: P_G_block
+Info (12021): Found 1 design units, including 1 entities, in source file notoperation.v
+    Info (12023): Found entity 1: NotOperation
+Info (12021): Found 1 design units, including 1 entities, in source file nonrestoringdivisionposineg.v
+    Info (12023): Found entity 1: nonRestoringDivisionPosiNeg
+Info (12021): Found 1 design units, including 1 entities, in source file nonrestoringdivision.v
+    Info (12023): Found entity 1: nonRestoringDivision
+Info (12021): Found 1 design units, including 1 entities, in source file mybusmux_bb.v
+    Info (12023): Found entity 1: mybusmux
+Info (12021): Found 1 design units, including 1 entities, in source file multiplexer.v
+    Info (12023): Found entity 1: Multiplexer
+Info (12021): Found 1 design units, including 1 entities, in source file mdrunit.v
+    Info (12023): Found entity 1: MDRunit
+Info (12021): Found 1 design units, including 1 entities, in source file logical_or.v
+    Info (12023): Found entity 1: logical_or
+Info (12021): Found 1 design units, including 1 entities, in source file logical_and.v
+    Info (12023): Found entity 1: logical_and
+Info (12021): Found 1 design units, including 1 entities, in source file left_shift.v
+    Info (12023): Found entity 1: left_shift
+Info (12021): Found 1 design units, including 1 entities, in source file left_rotate.v
+    Info (12023): Found entity 1: left_rotate
+Info (12021): Found 1 design units, including 1 entities, in source file hierarchical_cla.v
+    Info (12023): Found entity 1: Hierarchical_CLA
+Info (12021): Found 1 design units, including 1 entities, in source file half_adder.v
+    Info (12023): Found entity 1: half_adder
+Info (12021): Found 1 design units, including 1 entities, in source file full_adder.v
+    Info (12023): Found entity 1: full_adder
+Info (12021): Found 1 design units, including 1 entities, in source file encoder.v
+    Info (12023): Found entity 1: encoder
+Info (12021): Found 1 design units, including 1 entities, in source file dff_q.v
+    Info (12023): Found entity 1: dff_Q
+Info (12021): Found 1 design units, including 1 entities, in source file controlunit.v
+    Info (12023): Found entity 1: ControlUnit
+Info (12021): Found 1 design units, including 1 entities, in source file boothmultiplier.v
+    Info (12023): Found entity 1: boothMultiplier
+Info (12021): Found 1 design units, including 1 entities, in source file alu.v
+    Info (12023): Found entity 1: ALU
+Info (12021): Found 1 design units, including 1 entities, in source file aluregisters.v
+    Info (12023): Found entity 1: ALURegisters
+Info (12021): Found 1 design units, including 1 entities, in source file select_encode.v
+    Info (12023): Found entity 1: select_encode
+Info (12021): Found 1 design units, including 1 entities, in source file four_sixteen_decoder.v
+    Info (12023): Found entity 1: four_sixteen_decoder
+Info (12021): Found 1 design units, including 1 entities, in source file two_four_decoder.v
+    Info (12023): Found entity 1: two_four_decoder
+Info (12021): Found 1 design units, including 1 entities, in source file con_ff.v
+    Info (12023): Found entity 1: CON_FF
+Info (12021): Found 1 design units, including 1 entities, in source file d_flipflop.v
+    Info (12023): Found entity 1: D_flipflop
+Info (12021): Found 1 design units, including 1 entities, in source file branchtbf.v
+    Info (12023): Found entity 1: BranchTBF
+Info (12021): Found 1 design units, including 1 entities, in source file addiandioritb.v
+    Info (12023): Found entity 1: AddiAndiOriTB
+Info (12021): Found 1 design units, including 1 entities, in source file movhimovlooutput.v
+    Info (12023): Found entity 1: MovHiMovLoOutput
+Info (12021): Found 1 design units, including 1 entities, in source file jumptb.v
+    Info (12023): Found entity 1: JUMPTB
+Info (12021): Found 1 design units, including 1 entities, in source file controlunitbus.v
+    Info (12023): Found entity 1: ControlUnitBus
+Info (12021): Found 1 design units, including 1 entities, in source file memory.v
+    Info (12023): Found entity 1: Memory
+Info (12127): Elaborating entity "ControlUnitBus" for the top level hierarchy
+Warning (10036): Verilog HDL or VHDL warning at ControlUnitBus.v(19): object "ImmVal" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at ControlUnitBus.v(20): object "OPCode" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at ControlUnitBus.v(21): object "regASel" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at ControlUnitBus.v(21): object "regBSel" assigned a value but never read
+Warning (10230): Verilog HDL assignment warning at ControlUnitBus.v(39): truncated value with size 32 to match size of target (3)
+Info (12128): Elaborating entity "Bus" for hierarchy "Bus:B"
+Warning (10240): Verilog HDL Always Construct warning at Bus.v(86): inferring latch(es) for variable "regA", which holds its previous value in one or more paths through the always construct
+Warning (10240): Verilog HDL Always Construct warning at Bus.v(86): inferring latch(es) for variable "regB", which holds its previous value in one or more paths through the always construct
+Warning (10235): Verilog HDL Always Construct warning at Bus.v(140): variable "OPCode" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at Bus.v(140): variable "PCOut" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at Bus.v(140): variable "BusMuxOut" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10240): Verilog HDL Always Construct warning at Bus.v(146): inferring latch(es) for variable "MARInTemp", which holds its previous value in one or more paths through the always construct
+Warning (10240): Verilog HDL Always Construct warning at Bus.v(146): inferring latch(es) for variable "MemWrite", which holds its previous value in one or more paths through the always construct
+Warning (10240): Verilog HDL Always Construct warning at Bus.v(146): inferring latch(es) for variable "OutportOutCheck", which holds its previous value in one or more paths through the always construct
+Info (10041): Inferred latch for "MemWrite" at Bus.v(176)
+Info (10041): Inferred latch for "OutportOutCheck" at Bus.v(174)
+Info (10041): Inferred latch for "MARInTemp[0]" at Bus.v(160)
+Info (10041): Inferred latch for "MARInTemp[1]" at Bus.v(160)
+Info (10041): Inferred latch for "MARInTemp[2]" at Bus.v(160)
+Info (10041): Inferred latch for "MARInTemp[3]" at Bus.v(160)
+Info (10041): Inferred latch for "MARInTemp[4]" at Bus.v(160)
+Info (10041): Inferred latch for "MARInTemp[5]" at Bus.v(160)
+Info (10041): Inferred latch for "MARInTemp[6]" at Bus.v(160)
+Info (10041): Inferred latch for "MARInTemp[7]" at Bus.v(160)
+Info (10041): Inferred latch for "MARInTemp[8]" at Bus.v(160)
+Info (10041): Inferred latch for "MARInTemp[9]" at Bus.v(160)
+Info (10041): Inferred latch for "MARInTemp[10]" at Bus.v(160)
+Info (10041): Inferred latch for "MARInTemp[11]" at Bus.v(160)
+Info (10041): Inferred latch for "MARInTemp[12]" at Bus.v(160)
+Info (10041): Inferred latch for "MARInTemp[13]" at Bus.v(160)
+Info (10041): Inferred latch for "MARInTemp[14]" at Bus.v(160)
+Info (10041): Inferred latch for "MARInTemp[15]" at Bus.v(160)
+Info (10041): Inferred latch for "MARInTemp[16]" at Bus.v(160)
+Info (10041): Inferred latch for "MARInTemp[17]" at Bus.v(160)
+Info (10041): Inferred latch for "MARInTemp[18]" at Bus.v(160)
+Info (10041): Inferred latch for "MARInTemp[19]" at Bus.v(160)
+Info (10041): Inferred latch for "MARInTemp[20]" at Bus.v(160)
+Info (10041): Inferred latch for "MARInTemp[21]" at Bus.v(160)
+Info (10041): Inferred latch for "MARInTemp[22]" at Bus.v(160)
+Info (10041): Inferred latch for "MARInTemp[23]" at Bus.v(160)
+Info (10041): Inferred latch for "MARInTemp[24]" at Bus.v(160)
+Info (10041): Inferred latch for "MARInTemp[25]" at Bus.v(160)
+Info (10041): Inferred latch for "MARInTemp[26]" at Bus.v(160)
+Info (10041): Inferred latch for "MARInTemp[27]" at Bus.v(160)
+Info (10041): Inferred latch for "MARInTemp[28]" at Bus.v(160)
+Info (10041): Inferred latch for "MARInTemp[29]" at Bus.v(160)
+Info (10041): Inferred latch for "MARInTemp[30]" at Bus.v(160)
+Info (10041): Inferred latch for "MARInTemp[31]" at Bus.v(160)
+Info (10041): Inferred latch for "regB[0]" at Bus.v(121)
+Info (10041): Inferred latch for "regB[1]" at Bus.v(121)
+Info (10041): Inferred latch for "regB[2]" at Bus.v(121)
+Info (10041): Inferred latch for "regB[3]" at Bus.v(121)
+Info (10041): Inferred latch for "regB[4]" at Bus.v(121)
+Info (10041): Inferred latch for "regB[5]" at Bus.v(121)
+Info (10041): Inferred latch for "regB[6]" at Bus.v(121)
+Info (10041): Inferred latch for "regB[7]" at Bus.v(121)
+Info (10041): Inferred latch for "regB[8]" at Bus.v(121)
+Info (10041): Inferred latch for "regB[9]" at Bus.v(121)
+Info (10041): Inferred latch for "regB[10]" at Bus.v(121)
+Info (10041): Inferred latch for "regB[11]" at Bus.v(121)
+Info (10041): Inferred latch for "regB[12]" at Bus.v(121)
+Info (10041): Inferred latch for "regB[13]" at Bus.v(121)
+Info (10041): Inferred latch for "regB[14]" at Bus.v(121)
+Info (10041): Inferred latch for "regB[15]" at Bus.v(121)
+Info (10041): Inferred latch for "regB[16]" at Bus.v(121)
+Info (10041): Inferred latch for "regB[17]" at Bus.v(121)
+Info (10041): Inferred latch for "regB[18]" at Bus.v(121)
+Info (10041): Inferred latch for "regB[19]" at Bus.v(121)
+Info (10041): Inferred latch for "regB[20]" at Bus.v(121)
+Info (10041): Inferred latch for "regB[21]" at Bus.v(121)
+Info (10041): Inferred latch for "regB[22]" at Bus.v(121)
+Info (10041): Inferred latch for "regB[23]" at Bus.v(121)
+Info (10041): Inferred latch for "regB[24]" at Bus.v(121)
+Info (10041): Inferred latch for "regB[25]" at Bus.v(121)
+Info (10041): Inferred latch for "regB[26]" at Bus.v(121)
+Info (10041): Inferred latch for "regB[27]" at Bus.v(121)
+Info (10041): Inferred latch for "regB[28]" at Bus.v(121)
+Info (10041): Inferred latch for "regB[29]" at Bus.v(121)
+Info (10041): Inferred latch for "regB[30]" at Bus.v(121)
+Info (10041): Inferred latch for "regB[31]" at Bus.v(121)
+Info (10041): Inferred latch for "regA[0]" at Bus.v(117)
+Info (10041): Inferred latch for "regA[1]" at Bus.v(117)
+Info (10041): Inferred latch for "regA[2]" at Bus.v(117)
+Info (10041): Inferred latch for "regA[3]" at Bus.v(117)
+Info (10041): Inferred latch for "regA[4]" at Bus.v(117)
+Info (10041): Inferred latch for "regA[5]" at Bus.v(117)
+Info (10041): Inferred latch for "regA[6]" at Bus.v(117)
+Info (10041): Inferred latch for "regA[7]" at Bus.v(117)
+Info (10041): Inferred latch for "regA[8]" at Bus.v(117)
+Info (10041): Inferred latch for "regA[9]" at Bus.v(117)
+Info (10041): Inferred latch for "regA[10]" at Bus.v(117)
+Info (10041): Inferred latch for "regA[11]" at Bus.v(117)
+Info (10041): Inferred latch for "regA[12]" at Bus.v(117)
+Info (10041): Inferred latch for "regA[13]" at Bus.v(117)
+Info (10041): Inferred latch for "regA[14]" at Bus.v(117)
+Info (10041): Inferred latch for "regA[15]" at Bus.v(117)
+Info (10041): Inferred latch for "regA[16]" at Bus.v(117)
+Info (10041): Inferred latch for "regA[17]" at Bus.v(117)
+Info (10041): Inferred latch for "regA[18]" at Bus.v(117)
+Info (10041): Inferred latch for "regA[19]" at Bus.v(117)
+Info (10041): Inferred latch for "regA[20]" at Bus.v(117)
+Info (10041): Inferred latch for "regA[21]" at Bus.v(117)
+Info (10041): Inferred latch for "regA[22]" at Bus.v(117)
+Info (10041): Inferred latch for "regA[23]" at Bus.v(117)
+Info (10041): Inferred latch for "regA[24]" at Bus.v(117)
+Info (10041): Inferred latch for "regA[25]" at Bus.v(117)
+Info (10041): Inferred latch for "regA[26]" at Bus.v(117)
+Info (10041): Inferred latch for "regA[27]" at Bus.v(117)
+Info (10041): Inferred latch for "regA[28]" at Bus.v(117)
+Info (10041): Inferred latch for "regA[29]" at Bus.v(117)
+Info (10041): Inferred latch for "regA[30]" at Bus.v(117)
+Info (10041): Inferred latch for "regA[31]" at Bus.v(117)
+Info (12128): Elaborating entity "reg32bit" for hierarchy "Bus:B|reg32bit:PC"
+Info (12128): Elaborating entity "MDRunit" for hierarchy "Bus:B|MDRunit:mdr"
+Info (12128): Elaborating entity "ALU" for hierarchy "Bus:B|ALU:Logic"
+Warning (10240): Verilog HDL Always Construct warning at ALU.v(44): inferring latch(es) for variable "regLO", which holds its previous value in one or more paths through the always construct
+Warning (10240): Verilog HDL Always Construct warning at ALU.v(44): inferring latch(es) for variable "regHI", which holds its previous value in one or more paths through the always construct
+Info (10041): Inferred latch for "regHI[0]" at ALU.v(45)
+Info (10041): Inferred latch for "regHI[1]" at ALU.v(45)
+Info (10041): Inferred latch for "regHI[2]" at ALU.v(45)
+Info (10041): Inferred latch for "regHI[3]" at ALU.v(45)
+Info (10041): Inferred latch for "regHI[4]" at ALU.v(45)
+Info (10041): Inferred latch for "regHI[5]" at ALU.v(45)
+Info (10041): Inferred latch for "regHI[6]" at ALU.v(45)
+Info (10041): Inferred latch for "regHI[7]" at ALU.v(45)
+Info (10041): Inferred latch for "regHI[8]" at ALU.v(45)
+Info (10041): Inferred latch for "regHI[9]" at ALU.v(45)
+Info (10041): Inferred latch for "regHI[10]" at ALU.v(45)
+Info (10041): Inferred latch for "regHI[11]" at ALU.v(45)
+Info (10041): Inferred latch for "regHI[12]" at ALU.v(45)
+Info (10041): Inferred latch for "regHI[13]" at ALU.v(45)
+Info (10041): Inferred latch for "regHI[14]" at ALU.v(45)
+Info (10041): Inferred latch for "regHI[15]" at ALU.v(45)
+Info (10041): Inferred latch for "regHI[16]" at ALU.v(45)
+Info (10041): Inferred latch for "regHI[17]" at ALU.v(45)
+Info (10041): Inferred latch for "regHI[18]" at ALU.v(45)
+Info (10041): Inferred latch for "regHI[19]" at ALU.v(45)
+Info (10041): Inferred latch for "regHI[20]" at ALU.v(45)
+Info (10041): Inferred latch for "regHI[21]" at ALU.v(45)
+Info (10041): Inferred latch for "regHI[22]" at ALU.v(45)
+Info (10041): Inferred latch for "regHI[23]" at ALU.v(45)
+Info (10041): Inferred latch for "regHI[24]" at ALU.v(45)
+Info (10041): Inferred latch for "regHI[25]" at ALU.v(45)
+Info (10041): Inferred latch for "regHI[26]" at ALU.v(45)
+Info (10041): Inferred latch for "regHI[27]" at ALU.v(45)
+Info (10041): Inferred latch for "regHI[28]" at ALU.v(45)
+Info (10041): Inferred latch for "regHI[29]" at ALU.v(45)
+Info (10041): Inferred latch for "regHI[30]" at ALU.v(45)
+Info (10041): Inferred latch for "regHI[31]" at ALU.v(45)
+Info (10041): Inferred latch for "regLO[0]" at ALU.v(45)
+Info (10041): Inferred latch for "regLO[1]" at ALU.v(45)
+Info (10041): Inferred latch for "regLO[2]" at ALU.v(45)
+Info (10041): Inferred latch for "regLO[3]" at ALU.v(45)
+Info (10041): Inferred latch for "regLO[4]" at ALU.v(45)
+Info (10041): Inferred latch for "regLO[5]" at ALU.v(45)
+Info (10041): Inferred latch for "regLO[6]" at ALU.v(45)
+Info (10041): Inferred latch for "regLO[7]" at ALU.v(45)
+Info (10041): Inferred latch for "regLO[8]" at ALU.v(45)
+Info (10041): Inferred latch for "regLO[9]" at ALU.v(45)
+Info (10041): Inferred latch for "regLO[10]" at ALU.v(45)
+Info (10041): Inferred latch for "regLO[11]" at ALU.v(45)
+Info (10041): Inferred latch for "regLO[12]" at ALU.v(45)
+Info (10041): Inferred latch for "regLO[13]" at ALU.v(45)
+Info (10041): Inferred latch for "regLO[14]" at ALU.v(45)
+Info (10041): Inferred latch for "regLO[15]" at ALU.v(45)
+Info (10041): Inferred latch for "regLO[16]" at ALU.v(45)
+Info (10041): Inferred latch for "regLO[17]" at ALU.v(45)
+Info (10041): Inferred latch for "regLO[18]" at ALU.v(45)
+Info (10041): Inferred latch for "regLO[19]" at ALU.v(45)
+Info (10041): Inferred latch for "regLO[20]" at ALU.v(45)
+Info (10041): Inferred latch for "regLO[21]" at ALU.v(45)
+Info (10041): Inferred latch for "regLO[22]" at ALU.v(45)
+Info (10041): Inferred latch for "regLO[23]" at ALU.v(45)
+Info (10041): Inferred latch for "regLO[24]" at ALU.v(45)
+Info (10041): Inferred latch for "regLO[25]" at ALU.v(45)
+Info (10041): Inferred latch for "regLO[26]" at ALU.v(45)
+Info (10041): Inferred latch for "regLO[27]" at ALU.v(45)
+Info (10041): Inferred latch for "regLO[28]" at ALU.v(45)
+Info (10041): Inferred latch for "regLO[29]" at ALU.v(45)
+Info (10041): Inferred latch for "regLO[30]" at ALU.v(45)
+Info (10041): Inferred latch for "regLO[31]" at ALU.v(45)
+Info (12128): Elaborating entity "left_shift" for hierarchy "Bus:B|ALU:Logic|left_shift:SHL"
+Info (12128): Elaborating entity "dff_Q" for hierarchy "Bus:B|ALU:Logic|left_shift:SHL|dff_Q:b2v_inst35"
+Info (12128): Elaborating entity "right_shift_combined" for hierarchy "Bus:B|ALU:Logic|right_shift_combined:SHRL"
+Info (12128): Elaborating entity "mux2_1" for hierarchy "Bus:B|ALU:Logic|right_shift_combined:SHRL|mux2_1:b2v_inst1"
+Info (12128): Elaborating entity "left_rotate" for hierarchy "Bus:B|ALU:Logic|left_rotate:rotateL"
+Info (12128): Elaborating entity "right_rotate" for hierarchy "Bus:B|ALU:Logic|right_rotate:rotateR"
+Info (12128): Elaborating entity "logical_and" for hierarchy "Bus:B|ALU:Logic|logical_and:log_and"
+Info (12128): Elaborating entity "logical_or" for hierarchy "Bus:B|ALU:Logic|logical_or:log_or"
+Info (12128): Elaborating entity "NotOperation" for hierarchy "Bus:B|ALU:Logic|NotOperation:operationNot"
+Info (12128): Elaborating entity "twoCompliment" for hierarchy "Bus:B|ALU:Logic|twoCompliment:neg"
+Info (12128): Elaborating entity "Hierarchical_CLA" for hierarchy "Bus:B|ALU:Logic|Hierarchical_CLA:add"
+Info (12128): Elaborating entity "CLA_8inputs_updated" for hierarchy "Bus:B|ALU:Logic|Hierarchical_CLA:add|CLA_8inputs_updated:b2v_inst38"
+Info (12128): Elaborating entity "P_G_block" for hierarchy "Bus:B|ALU:Logic|Hierarchical_CLA:add|CLA_8inputs_updated:b2v_inst38|P_G_block:b2v_inst"
+Info (12128): Elaborating entity "boothMultiplier" for hierarchy "Bus:B|ALU:Logic|boothMultiplier:mul"
+Info (12128): Elaborating entity "nonRestoringDivisionPosiNeg" for hierarchy "Bus:B|ALU:Logic|nonRestoringDivisionPosiNeg:div"
+Warning (10036): Verilog HDL or VHDL warning at nonRestoringDivisionPosiNeg.v(7): object "M" assigned a value but never read
+Info (12128): Elaborating entity "ALURegisters" for hierarchy "Bus:B|ALURegisters:LogicReg"
+Info (12128): Elaborating entity "Memory" for hierarchy "Bus:B|Memory:memory"
+Info (12128): Elaborating entity "encoder" for hierarchy "Bus:B|encoder:EnO"
+Warning (10240): Verilog HDL Always Construct warning at encoder.v(10): inferring latch(es) for variable "d", which holds its previous value in one or more paths through the always construct
+Info (10041): Inferred latch for "d[0]" at encoder.v(13)
+Info (10041): Inferred latch for "d[1]" at encoder.v(13)
+Info (10041): Inferred latch for "d[2]" at encoder.v(13)
+Info (10041): Inferred latch for "d[3]" at encoder.v(13)
+Info (10041): Inferred latch for "d[4]" at encoder.v(13)
+Info (12128): Elaborating entity "Multiplexer" for hierarchy "Bus:B|Multiplexer:Mux"
+Warning (14025): LATCH primitive "Bus:B|encoder:EnO|d[4]" is permanently disabled
+Warning (14026): LATCH primitive "Bus:B|regA[0]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regB[0]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regA[1]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regA[31]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regA[30]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regA[29]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regA[28]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regA[27]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regA[26]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regA[25]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regA[24]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regA[23]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regA[22]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regA[21]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regA[20]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regA[19]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regA[18]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regA[17]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regA[16]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regA[15]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regA[14]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regA[13]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regA[12]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regA[11]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regA[10]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regA[9]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regA[8]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regA[7]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regA[6]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regA[5]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regA[4]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regA[3]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regA[2]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regB[31]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regB[30]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regB[29]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regB[28]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regB[27]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regB[26]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regB[25]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regB[24]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regB[23]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regB[22]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regB[21]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regB[20]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regB[19]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regB[18]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regB[17]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regB[16]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regB[15]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regB[14]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regB[13]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regB[12]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regB[11]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regB[10]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regB[9]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regB[8]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regB[7]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regB[6]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regB[5]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regB[4]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regB[3]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regB[2]" is permanently enabled
+Warning (14026): LATCH primitive "Bus:B|regB[1]" is permanently enabled
+Warning (276020): Inferred RAM node "Bus:B|Memory:memory|RAMregisters_rtl_0" from synchronous design logic.  Pass-through logic has been added to match the read-during-write behavior of the original design.
+Info (19000): Inferred 1 megafunctions from design logic
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "Bus:B|Memory:memory|RAMregisters_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 32
+        Info (286033): Parameter WIDTHAD_A set to 9
+        Info (286033): Parameter NUMWORDS_A set to 512
+        Info (286033): Parameter WIDTH_B set to 32
+        Info (286033): Parameter WIDTHAD_B set to 9
+        Info (286033): Parameter NUMWORDS_B set to 512
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter INIT_FILE set to db/Phase1.ram0_Memory_a0c6519c.hdl.mif
+Info (12130): Elaborated megafunction instantiation "Bus:B|Memory:memory|altsyncram:RAMregisters_rtl_0"
+Info (12133): Instantiated megafunction "Bus:B|Memory:memory|altsyncram:RAMregisters_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "32"
+    Info (12134): Parameter "WIDTHAD_A" = "9"
+    Info (12134): Parameter "NUMWORDS_A" = "512"
+    Info (12134): Parameter "WIDTH_B" = "32"
+    Info (12134): Parameter "WIDTHAD_B" = "9"
+    Info (12134): Parameter "NUMWORDS_B" = "512"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK0"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+    Info (12134): Parameter "INIT_FILE" = "db/Phase1.ram0_Memory_a0c6519c.hdl.mif"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_nqg1.tdf
+    Info (12023): Found entity 1: altsyncram_nqg1
+Warning (12189): OpenCore Simulation-Only Evaluation feature is turned on for all cores in the design
+    Warning (12191): Some cores in this design do not support the OpenCore Plus Hardware Evaluation feature
+        Warning (12192): "8B10B Encoder-Decoder (6AF7_0079)" does not support the OpenCore Plus Hardware Evaluation feature
+Warning (13012): Latch Bus:B|ALU:Logic|regLO[0] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[31]
+Warning (13012): Latch Bus:B|ALU:Logic|regLO[1] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[30]
+Warning (13012): Latch Bus:B|ALU:Logic|regLO[2] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[31]
+Warning (13012): Latch Bus:B|ALU:Logic|regLO[3] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[30]
+Warning (13012): Latch Bus:B|ALU:Logic|regLO[4] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[31]
+Warning (13012): Latch Bus:B|ALU:Logic|regLO[5] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[30]
+Warning (13012): Latch Bus:B|ALU:Logic|regLO[6] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[31]
+Warning (13012): Latch Bus:B|ALU:Logic|regLO[7] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[30]
+Warning (13012): Latch Bus:B|ALU:Logic|regLO[8] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[31]
+Warning (13012): Latch Bus:B|ALU:Logic|regLO[9] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[30]
+Warning (13012): Latch Bus:B|ALU:Logic|regLO[10] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[31]
+Warning (13012): Latch Bus:B|ALU:Logic|regLO[11] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[30]
+Warning (13012): Latch Bus:B|ALU:Logic|regLO[12] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[31]
+Warning (13012): Latch Bus:B|ALU:Logic|regLO[13] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[30]
+Warning (13012): Latch Bus:B|ALU:Logic|regLO[14] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[31]
+Warning (13012): Latch Bus:B|ALU:Logic|regLO[15] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[30]
+Warning (13012): Latch Bus:B|ALU:Logic|regLO[16] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[31]
+Warning (13012): Latch Bus:B|ALU:Logic|regLO[17] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[30]
+Warning (13012): Latch Bus:B|ALU:Logic|regLO[18] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[31]
+Warning (13012): Latch Bus:B|ALU:Logic|regLO[19] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[30]
+Warning (13012): Latch Bus:B|ALU:Logic|regLO[20] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[31]
+Warning (13012): Latch Bus:B|ALU:Logic|regLO[21] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[30]
+Warning (13012): Latch Bus:B|ALU:Logic|regLO[22] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[31]
+Warning (13012): Latch Bus:B|ALU:Logic|regLO[23] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[30]
+Warning (13012): Latch Bus:B|ALU:Logic|regLO[24] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[31]
+Warning (13012): Latch Bus:B|ALU:Logic|regLO[25] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[30]
+Warning (13012): Latch Bus:B|ALU:Logic|regLO[26] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[31]
+Warning (13012): Latch Bus:B|ALU:Logic|regLO[27] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[30]
+Warning (13012): Latch Bus:B|ALU:Logic|regLO[28] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[31]
+Warning (13012): Latch Bus:B|ALU:Logic|regLO[29] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[30]
+Warning (13012): Latch Bus:B|ALU:Logic|regLO[30] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[31]
+Warning (13012): Latch Bus:B|ALU:Logic|regLO[31] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[30]
+Warning (13012): Latch Bus:B|ALU:Logic|regHI[0] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[27]
+Warning (13012): Latch Bus:B|ALU:Logic|regHI[31] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[27]
+Warning (13012): Latch Bus:B|ALU:Logic|regHI[30] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[27]
+Warning (13012): Latch Bus:B|ALU:Logic|regHI[29] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[28]
+Warning (13012): Latch Bus:B|ALU:Logic|regHI[28] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[28]
+Warning (13012): Latch Bus:B|ALU:Logic|regHI[27] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[28]
+Warning (13012): Latch Bus:B|ALU:Logic|regHI[26] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[28]
+Warning (13012): Latch Bus:B|ALU:Logic|regHI[25] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[28]
+Warning (13012): Latch Bus:B|ALU:Logic|regHI[24] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[28]
+Warning (13012): Latch Bus:B|ALU:Logic|regHI[23] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[28]
+Warning (13012): Latch Bus:B|ALU:Logic|regHI[22] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[28]
+Warning (13012): Latch Bus:B|ALU:Logic|regHI[21] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[28]
+Warning (13012): Latch Bus:B|ALU:Logic|regHI[20] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[28]
+Warning (13012): Latch Bus:B|ALU:Logic|regHI[19] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[28]
+Warning (13012): Latch Bus:B|ALU:Logic|regHI[18] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[28]
+Warning (13012): Latch Bus:B|ALU:Logic|regHI[17] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[28]
+Warning (13012): Latch Bus:B|ALU:Logic|regHI[16] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[28]
+Warning (13012): Latch Bus:B|ALU:Logic|regHI[15] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[28]
+Warning (13012): Latch Bus:B|ALU:Logic|regHI[14] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[28]
+Warning (13012): Latch Bus:B|ALU:Logic|regHI[13] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[28]
+Warning (13012): Latch Bus:B|ALU:Logic|regHI[12] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[28]
+Warning (13012): Latch Bus:B|ALU:Logic|regHI[11] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[28]
+Warning (13012): Latch Bus:B|ALU:Logic|regHI[10] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[28]
+Warning (13012): Latch Bus:B|ALU:Logic|regHI[9] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[28]
+Warning (13012): Latch Bus:B|ALU:Logic|regHI[8] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[28]
+Warning (13012): Latch Bus:B|ALU:Logic|regHI[7] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[28]
+Warning (13012): Latch Bus:B|ALU:Logic|regHI[6] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[28]
+Warning (13012): Latch Bus:B|ALU:Logic|regHI[5] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[28]
+Warning (13012): Latch Bus:B|ALU:Logic|regHI[4] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[28]
+Warning (13012): Latch Bus:B|ALU:Logic|regHI[3] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[28]
+Warning (13012): Latch Bus:B|ALU:Logic|regHI[2] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[28]
+Warning (13012): Latch Bus:B|ALU:Logic|regHI[1] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Bus:B|reg32bit:IR|r[28]
+Warning (13004): Presettable and clearable registers converted to equivalent circuits with latches. Registers power-up to an undefined state, and DEVCLRn places the registers in an undefined state.
+    Warning (13310): Register "PresentState[2]" is converted into an equivalent circuit using register "PresentState[2]~_emulated" and latch "PresentState[2]~1"
+    Warning (13310): Register "StateHolder[2]" is converted into an equivalent circuit using register "StateHolder[2]~_emulated" and latch "StateHolder[2]~1"
+    Warning (13310): Register "PresentState[0]" is converted into an equivalent circuit using register "PresentState[0]~_emulated" and latch "PresentState[2]~1"
+    Warning (13310): Register "PresentState[1]" is converted into an equivalent circuit using register "PresentState[1]~_emulated" and latch "PresentState[2]~1"
+    Warning (13310): Register "StateHolder[1]" is converted into an equivalent circuit using register "StateHolder[1]~_emulated" and latch "StateHolder[1]~5"
+    Warning (13310): Register "StateHolder[0]" is converted into an equivalent circuit using register "StateHolder[0]~_emulated" and latch "StateHolder[0]~9"
+Info (286030): Timing-Driven Synthesis is running
+Info (144001): Generated suppressed messages file C:/Users/789wi/Videos/ELEC-374/output_files/Phase1.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 32 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "MDRMDataIn[0]"
+    Warning (15610): No output dependent on input pin "MDRMDataIn[1]"
+    Warning (15610): No output dependent on input pin "MDRMDataIn[2]"
+    Warning (15610): No output dependent on input pin "MDRMDataIn[3]"
+    Warning (15610): No output dependent on input pin "MDRMDataIn[4]"
+    Warning (15610): No output dependent on input pin "MDRMDataIn[5]"
+    Warning (15610): No output dependent on input pin "MDRMDataIn[6]"
+    Warning (15610): No output dependent on input pin "MDRMDataIn[7]"
+    Warning (15610): No output dependent on input pin "MDRMDataIn[8]"
+    Warning (15610): No output dependent on input pin "MDRMDataIn[9]"
+    Warning (15610): No output dependent on input pin "MDRMDataIn[10]"
+    Warning (15610): No output dependent on input pin "MDRMDataIn[11]"
+    Warning (15610): No output dependent on input pin "MDRMDataIn[12]"
+    Warning (15610): No output dependent on input pin "MDRMDataIn[13]"
+    Warning (15610): No output dependent on input pin "MDRMDataIn[14]"
+    Warning (15610): No output dependent on input pin "MDRMDataIn[15]"
+    Warning (15610): No output dependent on input pin "MDRMDataIn[16]"
+    Warning (15610): No output dependent on input pin "MDRMDataIn[17]"
+    Warning (15610): No output dependent on input pin "MDRMDataIn[18]"
+    Warning (15610): No output dependent on input pin "MDRMDataIn[19]"
+    Warning (15610): No output dependent on input pin "MDRMDataIn[20]"
+    Warning (15610): No output dependent on input pin "MDRMDataIn[21]"
+    Warning (15610): No output dependent on input pin "MDRMDataIn[22]"
+    Warning (15610): No output dependent on input pin "MDRMDataIn[23]"
+    Warning (15610): No output dependent on input pin "MDRMDataIn[24]"
+    Warning (15610): No output dependent on input pin "MDRMDataIn[25]"
+    Warning (15610): No output dependent on input pin "MDRMDataIn[26]"
+    Warning (15610): No output dependent on input pin "MDRMDataIn[27]"
+    Warning (15610): No output dependent on input pin "MDRMDataIn[28]"
+    Warning (15610): No output dependent on input pin "MDRMDataIn[29]"
+    Warning (15610): No output dependent on input pin "MDRMDataIn[30]"
+    Warning (15610): No output dependent on input pin "MDRMDataIn[31]"
+Info (21057): Implemented 9783 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 35 input pins
+    Info (21059): Implemented 32 output pins
+    Info (21061): Implemented 9684 logic cells
+    Info (21064): Implemented 32 RAM segments
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 254 warnings
+    Info: Peak virtual memory: 4685 megabytes
+    Info: Processing ended: Mon Apr 03 16:31:36 2023
+    Info: Elapsed time: 00:00:36
+    Info: Total CPU time (on all processors): 00:00:34
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in C:/Users/789wi/Videos/ELEC-374/output_files/Phase1.map.smsg.
+
+

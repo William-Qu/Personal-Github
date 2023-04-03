@@ -1,0 +1,8 @@
+module RAM (
+input write,
+input [31:0] dataIn
+input [8:0] Addr,
+output [31:0] data
+);
+
+	

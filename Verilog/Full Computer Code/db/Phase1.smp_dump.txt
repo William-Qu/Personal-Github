@@ -1,0 +1,9 @@
+
+State Machine - |ControlUnitBus|PresentState
+Name PresentState.T4 PresentState.T3 PresentState.T2 PresentState.T1 PresentState.T0 PresentState.ResetState 
+PresentState.ResetState 0 0 0 0 0 0 
+PresentState.T0 0 0 0 0 1 1 
+PresentState.T1 0 0 0 1 0 1 
+PresentState.T2 0 0 1 0 0 1 
+PresentState.T3 0 1 0 0 0 1 
+PresentState.T4 1 0 0 0 0 1 

@@ -1,0 +1,16 @@
+Warning (10268): Verilog HDL information at AND_tb.v(43): always construct contains both blocking and non-blocking assignments
+Warning (10268): Verilog HDL information at DIV_tb.v(42): always construct contains both blocking and non-blocking assignments
+Warning (10268): Verilog HDL information at MUL_tb.v(44): always construct contains both blocking and non-blocking assignments
+Warning (10268): Verilog HDL information at NEG_tb.v(40): always construct contains both blocking and non-blocking assignments
+Warning (10268): Verilog HDL information at OR_tb.v(42): always construct contains both blocking and non-blocking assignments
+Warning (10268): Verilog HDL information at NOT_tb.v(40): always construct contains both blocking and non-blocking assignments
+Warning (10268): Verilog HDL information at ROL_tb.v(40): always construct contains both blocking and non-blocking assignments
+Warning (10268): Verilog HDL information at ROR_tb.v(40): always construct contains both blocking and non-blocking assignments
+Warning (10268): Verilog HDL information at SHL_tb.v(42): always construct contains both blocking and non-blocking assignments
+Warning (10268): Verilog HDL information at SHRA_tb.v(42): always construct contains both blocking and non-blocking assignments
+Warning (10268): Verilog HDL information at SUB_tb.v(42): always construct contains both blocking and non-blocking assignments
+Warning (10268): Verilog HDL information at SHR_tb.v(42): always construct contains both blocking and non-blocking assignments
+Info (10281): Verilog HDL Declaration information at Bus.v(4): object "MDRout" differs only in case from object "MDROut" in the same scope
+Info (10281): Verilog HDL Declaration information at Bus.v(4): object "PCout" differs only in case from object "PCOut" in the same scope
+Info (10281): Verilog HDL Declaration information at Bus.v(4): object "ZLOout" differs only in case from object "ZLoOut" in the same scope
+Info (10281): Verilog HDL Declaration information at Bus.v(4): object "ZHIout" differs only in case from object "ZHiOut" in the same scope

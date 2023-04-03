@@ -1,0 +1,55 @@
+//Initialize the registers
+reg32bit R0out(q, d, clr, clk, wren), R1out(q, d, clr, clk, wren), R2out(q, d, clr, clk, wren), R3out(q, d, clr, clk, wren), 
+						  R4out(q, d, clr, clk, wren), R5out(q, d, clr, clk, wren), R6out(q, d, clr, clk, wren), R7out(q, d, clr, clk, wren),
+						  R8out(q, d, clr, clk, wren), R9out(q, d, clr, clk, wren), R10out(q, d, clr, clk, wren), R11out(q, d, clr, clk, wren), 
+						  R12out(q, d, clr, clk, wren), R13out(q, d, clr, clk, wren), R14out(q, d, clr, clk, wren), R15out(q, d, clr, clk, wren),
+						  HIout(q, d, clr, clk, wren), LOout(q, d, clr, clk, wren), ZHIout(q, d, clr, clk, wren), ZLOout(q, d, clr, clk, wren),
+						  PCout(q, d, clr, clk, wren), MDRout(q, d, clr, clk, wren), InPortOut(q, d, clr, clk, wren), Cout(q, d, clr, clk, wren), d(q, d, clr, clk, wren);
+						  
+//Initialize the Encoder
+s[4:0] = 32to5Encoder(R0out, R1out, R2out, R3out, 
+				 R4out, R5out, R6out, R7out,
+			    R8out, R9out, R10out, R11out, 
+			    R12out, R13out, R14out, R15out,
+			    HIout, LOout, ZHIout, ZLOout,
+			    PCout, MDRout, InPortOut, Cout, d)						  
+
+//Initialize Mux Inputs
+reg32bit BusMuxIn-R0(q, d, clr, clk, wren),BusMuxIn-R1(q, d, clr, clk, wren),BusMuxIn-R2(q, d, clr, clk, wren),BusMuxIn-R3(q, d, clr, clk, wren),BusMuxIn-R4(q, d, clr, clk, wren),
+			BusMuxIn-R5(q, d, clr, clk, wren),BusMuxIn-R6(q, d, clr, clk, wren),BusMuxIn-R7(q, d, clr, clk, wren),BusMuxIn-R8(q, d, clr, clk, wren),BusMuxIn-R9(q, d, clr, clk, wren),
+			BusMuxIn-R10(q, d, clr, clk, wren),BusMuxIn-R11(q, d, clr, clk, wren),BusMuxIn-R12(q, d, clr, clk, wren),BusMuxIn-R13(q, d, clr, clk, wren),BusMuxIn-R14(q, d, clr, clk, wren),
+			BusMuxIn-R15(q, d, clr, clk, wren),BusMuxIn-HI(q, d, clr, clk, wren),BusMuxIn-LO(q, d, clr, clk, wren),BusMuxIn-ZHI(q, d, clr, clk, wren),BusMuxIn-ZLO(q, d, clr, clk, wren),
+			BusMuxIn-PC(q, d, clr, clk, wren),BusMuxIn-MDR(q, d, clr, clk, wren),BusMuxIn-INPORT(q, d, clr, clk, wren),BusMuxIn-C-SIGN-EXTENDED(q, d, clr, clk, wren);
+
+//Initialize MUX
+mybusmux (BusMuxIn-R0,BusMuxIn-R1,BusMuxIn-R2,BusMuxIn-R3,BusMuxIn-R4,
+			BusMuxIn-R5,BusMuxIn-R6,BusMuxIn-R7,BusMuxIn-R8,BusMuxIn-R9,
+			BusMuxIn-R10,BusMuxIn-R11,BusMuxIn-R12,BusMuxIn-R13,BusMuxIn-R14,
+			BusMuxIn-R15,BusMuxIn-HI,BusMuxIn-LO,BusMuxIn-ZHI,BusMuxIn-ZLO,
+			BusMuxIn-PC,BusMuxIn-MDR,BusMuxIn-INPORT,BusMuxIn-C-SIGN-EXTENDED,s[4:0],);
+data0x,
+	data10x,
+	data11x,
+	data12x,
+	data13x,
+	data14x,
+	data15x,
+	data16x,
+	data17x,
+	data18x,
+	data19x,
+	data1x,
+	data20x,
+	data21x,
+	data22x,
+	data23x,
+	data2x,
+	data3x,
+	data4x,
+	data5x,
+	data6x,
+	data7x,
+	data8x,
+	data9x,
+	sel,
+	result);

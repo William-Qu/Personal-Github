@@ -1,0 +1,12 @@
+set_global_assignment -name IP_TOOL_NAME "8B10B Encoder-Decoder"
+set_global_assignment -name IP_TOOL_VERSION "13.0"
+set_global_assignment -name VERILOG_FILE [file join $::quartus(qip_path) "myencoder32_enc8b10b.v"]
+set_global_assignment -name VERILOG_FILE [file join $::quartus(qip_path) "myencoder32.v"]
+set_global_assignment -name SEARCH_PATH  [file join $::quartus(qip_path) "." ]
+set_global_assignment -name MISC_FILE [file join $::quartus(qip_path) myencoder32_constraints.tcl ]
+set_global_assignment -name OCP_FILE [file join $::quartus(qip_path) myencoder32_enc8b10b.ocp ]
+set_global_assignment -name MISC_FILE [file join $::quartus(qip_path) myencoder32_enc8b10b.v ]
+set_global_assignment -name MISC_FILE [file join $::quartus(qip_path) myencoder32.v ]
+set_global_assignment -name MISC_FILE [file join $::quartus(qip_path) myencoder32.bsf ]
+set_global_assignment -name MISC_FILE [file join $::quartus(qip_path) myencoder32.qip ]
+set_global_assignment -name MISC_FILE [file join $::quartus(qip_path) myencoder32.html ]

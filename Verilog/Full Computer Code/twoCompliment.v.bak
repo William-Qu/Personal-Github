@@ -1,0 +1,10 @@
+module twoCompliment(
+	input [31:0] d;
+	output [31:0] q;
+)
+	for (k = 0; k < 32; k = k + 1)
+		begin
+			q[k] = not(d[k]);
+		end
+	d = d + 'b1;
+endmodule

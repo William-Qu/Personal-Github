@@ -1,0 +1,146 @@
+Flow report for Phase1
+Mon Apr 03 16:31:36 2023
+Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Flow Summary
+  3. Flow Settings
+  4. Flow Non-Default Global Settings
+  5. Flow Elapsed Time
+  6. Flow OS Summary
+  7. Flow Log
+  8. Flow Messages
+  9. Flow Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++---------------------------------------------------------------------------------------+
+; Flow Summary                                                                          ;
++------------------------------------+--------------------------------------------------+
+; Flow Status                        ; Successful - Mon Apr 03 16:31:35 2023            ;
+; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version ;
+; Revision Name                      ; Phase1                                           ;
+; Top-level Entity Name              ; ControlUnitBus                                   ;
+; Family                             ; Cyclone III                                      ;
+; Device                             ; EP3C16F484C6                                     ;
+; Timing Models                      ; Final                                            ;
+; Total logic elements               ; 9,579                                            ;
+;     Total combinational functions  ; 8,944                                            ;
+;     Dedicated logic registers      ; 931                                              ;
+; Total registers                    ; 931                                              ;
+; Total pins                         ; 67                                               ;
+; Total virtual pins                 ; 0                                                ;
+; Total memory bits                  ; 16,384                                           ;
+; Embedded Multiplier 9-bit elements ; 0                                                ;
+; Total PLLs                         ; 0                                                ;
++------------------------------------+--------------------------------------------------+
+
+
++-----------------------------------------+
+; Flow Settings                           ;
++-------------------+---------------------+
+; Option            ; Setting             ;
++-------------------+---------------------+
+; Start date & time ; 04/03/2023 16:31:02 ;
+; Main task         ; Compilation         ;
+; Revision Name     ; Phase1              ;
++-------------------+---------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                                     ;
++--------------------------------------+---------------------------------------+---------------+----------------+----------------------+
+; Assignment Name                      ; Value                                 ; Default Value ; Entity Name    ; Section Id           ;
++--------------------------------------+---------------------------------------+---------------+----------------+----------------------+
+; COMPILER_SIGNATURE_ID                ; 38923010049.168055386208708           ; --            ; --             ; --                   ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                    ; --            ; --             ; TestbenchMultiplier  ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                    ; --            ; --             ; TestbenchControlUnit ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                    ; --            ; --             ; ADD_tb               ;
+; EDA_NATIVELINK_SIMULATION_TEST_BENCH ; ADD_tb                                ; --            ; --             ; eda_simulation       ;
+; EDA_OUTPUT_DATA_FORMAT               ; Verilog Hdl                           ; --            ; --             ; eda_simulation       ;
+; EDA_SIMULATION_TOOL                  ; ModelSim-Altera (Verilog)             ; <None>        ; --             ; --                   ;
+; EDA_TEST_BENCH_ENABLE_STATUS         ; TEST_BENCH_MODE                       ; --            ; --             ; eda_simulation       ;
+; EDA_TEST_BENCH_FILE                  ; TestbenchMultiplier.v                 ; --            ; --             ; TestbenchMultiplier  ;
+; EDA_TEST_BENCH_FILE                  ; TestbenchControlUnit.v                ; --            ; --             ; TestbenchControlUnit ;
+; EDA_TEST_BENCH_FILE                  ; ADD_tb.v                              ; --            ; --             ; ADD_tb               ;
+; EDA_TEST_BENCH_MODULE_NAME           ; TestbenchMultiplier                   ; --            ; --             ; TestbenchMultiplier  ;
+; EDA_TEST_BENCH_MODULE_NAME           ; TestbenchControlUnit                  ; --            ; --             ; TestbenchControlUnit ;
+; EDA_TEST_BENCH_MODULE_NAME           ; ADD_tb                                ; --            ; --             ; ADD_tb               ;
+; EDA_TEST_BENCH_NAME                  ; TestbenchMultiplier                   ; --            ; --             ; eda_simulation       ;
+; EDA_TEST_BENCH_NAME                  ; TestbenchControlUnit                  ; --            ; --             ; eda_simulation       ;
+; EDA_TEST_BENCH_NAME                  ; ADD_tb                                ; --            ; --             ; eda_simulation       ;
+; EDA_TEST_BENCH_RUN_SIM_FOR           ; 500 ns                                ; --            ; --             ; TestbenchMultiplier  ;
+; EDA_TEST_BENCH_RUN_SIM_FOR           ; 800 ns                                ; --            ; --             ; TestbenchControlUnit ;
+; EDA_TEST_BENCH_RUN_SIM_FOR           ; 1000 ns                               ; --            ; --             ; ADD_tb               ;
+; EDA_TIME_SCALE                       ; 1 ps                                  ; --            ; --             ; eda_simulation       ;
+; IP_TOOL_NAME                         ; 8B10B Encoder-Decoder                 ; --            ; --             ; --                   ;
+; IP_TOOL_VERSION                      ; 13.0                                  ; --            ; --             ; --                   ;
+; MAX_CORE_JUNCTION_TEMP               ; 85                                    ; --            ; --             ; --                   ;
+; MIN_CORE_JUNCTION_TEMP               ; 0                                     ; --            ; --             ; --                   ;
+; MISC_FILE                            ; myencoder32_constraints.tcl           ; --            ; --             ; --                   ;
+; MISC_FILE                            ; myencoder32_enc8b10b.v                ; --            ; --             ; --                   ;
+; MISC_FILE                            ; myencoder32.v                         ; --            ; --             ; --                   ;
+; MISC_FILE                            ; myencoder32.bsf                       ; --            ; --             ; --                   ;
+; MISC_FILE                            ; myencoder32.qip                       ; --            ; --             ; --                   ;
+; MISC_FILE                            ; myencoder32.html                      ; --            ; --             ; --                   ;
+; NOMINAL_CORE_SUPPLY_VOLTAGE          ; 1.2V                                  ; --            ; --             ; --                   ;
+; PARTITION_COLOR                      ; 16764057                              ; --            ; ControlUnitBus ; Top                  ;
+; PARTITION_FITTER_PRESERVATION_LEVEL  ; PLACEMENT_AND_ROUTING                 ; --            ; ControlUnitBus ; Top                  ;
+; PARTITION_NETLIST_TYPE               ; SOURCE                                ; --            ; ControlUnitBus ; Top                  ;
+; POWER_BOARD_THERMAL_MODEL            ; None (CONSERVATIVE)                   ; --            ; --             ; --                   ;
+; POWER_PRESET_COOLING_SOLUTION        ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW ; --            ; --             ; --                   ;
+; PROJECT_OUTPUT_DIRECTORY             ; output_files                          ; --            ; --             ; --                   ;
+; SEARCH_PATH                          ; .                                     ; --            ; --             ; --                   ;
+; TOP_LEVEL_ENTITY                     ; ControlUnitBus                        ; Phase1        ; --             ; --                   ;
++--------------------------------------+---------------------------------------+---------------+----------------+----------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                        ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis ; 00:00:33     ; 1.0                     ; 4685 MB             ; 00:00:32                           ;
+; Total                ; 00:00:33     ; --                      ; --                  ; 00:00:32                           ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+
+
++-----------------------------------------------------------------------------------+
+; Flow OS Summary                                                                   ;
++----------------------+------------------+-----------+------------+----------------+
+; Module Name          ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
++----------------------+------------------+-----------+------------+----------------+
+; Analysis & Synthesis ; DESKTOP-MP94GB7  ; Windows 7 ; 6.2        ; x86_64         ;
++----------------------+------------------+-----------+------------+----------------+
+
+
+------------
+; Flow Log ;
+------------
+quartus_map --read_settings_files=on --write_settings_files=off Phase1 -c Phase1
+
+
+

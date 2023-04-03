@@ -1,0 +1,19 @@
+module select_encode(input [31:0] IR,
+							input Gra, Grb, Grc,
+							input Rin_input, Rout_input, BAout,
+							output [31:0] C_sign_extend,
+							output [15:0] Rin_output
+							output [15:0] Rout_output);
+							
+	wire [15:0] decoder_output;
+	reg [4:0] decoder_input;
+	
+								       //Ra							 Rb							Rc
+	assign decoder_input = ((IR[26:23]&{4{Gra}}) | (IR[22:19]&{4{Grb}}) | (IR[18:15]&{4{Grc}}));
+	
+	
+	
+	
+	
+	
+	

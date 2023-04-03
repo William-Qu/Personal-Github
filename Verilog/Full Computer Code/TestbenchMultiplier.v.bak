@@ -1,0 +1,22 @@
+module TestbenchMultiplier;
+	reg [31:0] mc, mp;
+	wire [31:0] HI, LO;
+	
+	boothMultiplier()
+	
+	initial 
+	begin 
+		//case 0
+		mc <= 'h00000000;
+		mp <= 'h00000000;
+		#1 $display("HI = %b, and LO = %b", HI, LO);
+		//case 1
+		mc <= 'hFFFFFFFF;
+		mp <= 'hFFFFFFFF;
+		#1 $display("HI = %b, and LO = %b", HI, LO);
+		//case 2
+		mc <= 'h74FF8201;
+		mp <= 'h22019BAA;
+		#1 $display("HI = %b, and LO = %b", HI, LO);
+	end
+endmodule 

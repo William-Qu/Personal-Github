@@ -1,0 +1,37 @@
+module CON_FF (input [31:0] IR,
+					input [31:0] bus,
+					input CONin,
+					output CONout);
+					
+		wire [3:0] decoder_output;
+		wire [1:0] decoder_input;
+		
+		wire equal, notequal, equalorless, greater, d; 
+		
+		if(bus == 32'b0) begin
+			assign equal = 1'b1;
+			assign notequal = 1'b0;
+		end else begin
+			assign equal = 1'b0;
+			assign notequal = 1'b1;
+		end 
+		
+		if(bus[31] == 1'b0) begin
+			assign equalorless = 1'b1;
+			assign greater = 1'b0;
+		end else begin
+			assign equalorless = 1'b0;
+			assign greater = 1'b1;
+		
+		assign decoder_input = IR[20:19];
+		
+		two_four_decoder decode (decoder_output, decoder_input);
+		
+		assign d = ()(decoder[0] & equal) | (decoder[1] & notequal) | (decoder[2] & equalorless) | (decoder[3] & greater));
+		
+		dff_Q CONFF (.D(d), .clk(CONin), .clr(1'b0), .Q(CONout));
+		
+endmodule
+		
+		
+		

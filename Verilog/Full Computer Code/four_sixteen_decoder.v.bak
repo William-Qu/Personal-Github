@@ -1,0 +1,23 @@
+module four_sixteen_decoder (input [3:0] in, output[15:0] out);
+	
+	parameter = temp_out 16'b0000000000000001;
+	assign out = 4b'0000 ? temp_out 	   : 
+					 4b'0001 ? temp_out<<1  :
+					 4b'0010 ? temp_out<<2  :
+					 4b'0011 ? temp_out<<3  :
+					 4b'0100 ? temp_out<<4  :
+					 4b'0101 ? temp_out<<5  :
+					 4b'0110 ? temp_out<<6  :
+					 4b'0111 ? temp_out<<7  :
+					 4b'1000 ? temp_out<<8  :
+					 4b'1001 ? temp_out<<9  :
+					 4b'1010 ? temp_out<<10 :
+					 4b'1011 ? temp_out<<11 :
+					 4b'1100 ? temp_out<<12 :
+					 4b'1101 ? temp_out<<13 :
+					 4b'1110 ? temp_out<<14 :
+					 4b'1111 ? temp_out<<15 :
+endmodule 
+			
+			
+		

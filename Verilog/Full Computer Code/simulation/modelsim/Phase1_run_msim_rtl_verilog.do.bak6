@@ -1,0 +1,33 @@
+transcript on
+if {[file exists rtl_work]} {
+	vdel -lib rtl_work -all
+}
+vlib rtl_work
+vmap work rtl_work
+
+vlog -vlog01compat -work work +incdir+C:/Users/789wi/Videos/ELEC-374 {C:/Users/789wi/Videos/ELEC-374/mux2_1.v}
+vlog -vlog01compat -work work +incdir+C:/Users/789wi/Videos/ELEC-374 {C:/Users/789wi/Videos/ELEC-374/twoCompliment.v}
+vlog -vlog01compat -work work +incdir+C:/Users/789wi/Videos/ELEC-374 {C:/Users/789wi/Videos/ELEC-374/right_shift_combined.v}
+vlog -vlog01compat -work work +incdir+C:/Users/789wi/Videos/ELEC-374 {C:/Users/789wi/Videos/ELEC-374/right_rotate.v}
+vlog -vlog01compat -work work +incdir+C:/Users/789wi/Videos/ELEC-374 {C:/Users/789wi/Videos/ELEC-374/reg32bit.v}
+vlog -vlog01compat -work work +incdir+C:/Users/789wi/Videos/ELEC-374 {C:/Users/789wi/Videos/ELEC-374/P_G_block.v}
+vlog -vlog01compat -work work +incdir+C:/Users/789wi/Videos/ELEC-374 {C:/Users/789wi/Videos/ELEC-374/NotOperation.v}
+vlog -vlog01compat -work work +incdir+C:/Users/789wi/Videos/ELEC-374 {C:/Users/789wi/Videos/ELEC-374/nonRestoringDivisionPosiNeg.v}
+vlog -vlog01compat -work work +incdir+C:/Users/789wi/Videos/ELEC-374 {C:/Users/789wi/Videos/ELEC-374/logical_or.v}
+vlog -vlog01compat -work work +incdir+C:/Users/789wi/Videos/ELEC-374 {C:/Users/789wi/Videos/ELEC-374/logical_and.v}
+vlog -vlog01compat -work work +incdir+C:/Users/789wi/Videos/ELEC-374 {C:/Users/789wi/Videos/ELEC-374/left_shift.v}
+vlog -vlog01compat -work work +incdir+C:/Users/789wi/Videos/ELEC-374 {C:/Users/789wi/Videos/ELEC-374/left_rotate.v}
+vlog -vlog01compat -work work +incdir+C:/Users/789wi/Videos/ELEC-374 {C:/Users/789wi/Videos/ELEC-374/Hierarchical_CLA.v}
+vlog -vlog01compat -work work +incdir+C:/Users/789wi/Videos/ELEC-374 {C:/Users/789wi/Videos/ELEC-374/dff_Q.v}
+vlog -vlog01compat -work work +incdir+C:/Users/789wi/Videos/ELEC-374 {C:/Users/789wi/Videos/ELEC-374/ControlUnit.v}
+vlog -vlog01compat -work work +incdir+C:/Users/789wi/Videos/ELEC-374 {C:/Users/789wi/Videos/ELEC-374/boothMultiplier.v}
+vlog -vlog01compat -work work +incdir+C:/Users/789wi/Videos/ELEC-374 {C:/Users/789wi/Videos/ELEC-374/ALU.v}
+
+vlog -vlog01compat -work work +incdir+C:/Users/789wi/Videos/ELEC-374 {C:/Users/789wi/Videos/ELEC-374/TestbenchControlUnit.v}
+
+vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneiii_ver -L rtl_work -L work -voptargs="+acc"  TestbenchControlUnit
+
+add wave *
+view structure
+view signals
+run 500 ns
