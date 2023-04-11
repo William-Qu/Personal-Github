@@ -1,0 +1,83 @@
+p{
+  color: black;
+  font-size: 18px;
+  font: 'Times New Roman';
+}
+
+.Table{
+	color: white;
+	font: 'Times New Roman';
+	background-color: lightblue;
+}
+table tr{
+	color: white;
+	font: 'Times New Roman';
+	background-color: orange;
+}
+
+h1{
+	color: black;
+	font-size: 40px;
+	font: 'Times';
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.ParaBox{
+  width = 50%;
+}
+
+div {
+
+}
+
+
+body {
+  background-image: url('RestaurantPicture.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: rgba(255, 255, 255, 0.5);
+  //opacity: 0.1;
+}
+
+.TransparentBox {
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 30px;
+  padding: 1px;
+}
+
+.ColourBox {
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 25px;
+  //padding: 0.11px;
+  width: 70%;
+  height: 10%;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  margin-left: 10px;
+  margin-right: 10px;
+  transition: transform 0.75s ease-in-out;
+  background-color: rgba(255,255,255,0);
+}
+
+.logo:hover {
+  transform: rotate(360deg);
+}
+
+.GrowBox:hover {
+  transform: scale(1.2)
+}
+
+a:hover{
+  color: red;
+}
+

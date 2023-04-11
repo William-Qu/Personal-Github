@@ -1,0 +1,61 @@
+-- Question 1 --
+select SSN, FName, LName
+from employee
+where salary = (select min(salary) from employee);
+
+-- Question 2 --
+select FName, LName
+from employee
+where SSN = (select ESSN 
+             from dependent as d natural join (select * from dependent where relationship = 'Spouse') as s
+             where relationship = 'Daughter');
+
+** Question 3 **
+select e.FName, e.LName, p.PName 
+	from employee e join works_on w on e.SSN = w.ESSN join (
+		select distinct pno from works_on where essn in (
+			select ssn 
+            from employee 
+            where LName = 'Wong' or LName = 'Borg' or LName = 'English')
+    	) as wp on w.pno = wp.pno
+    	join project p on w.pno = p.pnumber;
+
+-- Question 4 --
+select FName, LName, SSN, Salary
+from employee as e join department as d on e.SSN = d.MGRSSN
+where salary > 30000 and sex = 'M';
+
+-- Question 5 -- 
+select PName, PNumber
+from project p inner join works_on w 
+	on p.PNumber = w.PNo inner join 
+    (select SSN from employee where lname = 'Narayan') as n on n.SSN = w.ESSN inner join (select SSN from employee where lname = 'Jabbar') as j on j.SSN = n.SSN;
+
+-- Question 6 -- 
+select e.FName, e.LName, (year(CURRENT_DATE()) - year(d.bdate))
+from dependent d join employee e on d.ESSN = e.SSN;
+
+-- Question 7 --
+select e.FName, e.LName, p.PName, w.Hours from project p 
+	join works_on w on p.pnumber = w.pno
+    join employee e on w.essn = e.SSN
+    join (
+        select pnumber from project where plocation = 'Houston'
+        ) as projectsInHouston on w.pno = projectsInHouston.pnumber;
+
+-- Question 8 -- 
+select *
+from employee e left join 
+	(select FName, LName, SSN from employee m) as em
+    on e.SuperSSN = em.SSN;
+        
+-- Question 9 --
+select p.PName, p.PLocation, e.FName, e.LName
+from project p join department d on p.DNum = d.DNumber
+	join employee e on d.MGRSSN = e.SSN;
+    
+-- Question 10 --
+select e.FName, e.LName
+from employee e join employee m on e.SuperSSN = m.SSN 
+where e.salary = (select max(k.salary) 
+                from employee k join employee r on k.SuperSSN = r.SSN);

@@ -1,0 +1,233 @@
+drop database if exists finalproject332;
+create database finalproject332;
+
+create table customerAccount(
+    emailAddress varchar(100),
+    firstName varchar(100),
+    lastName varchar(100),
+    cellNum char(10),
+    streetAddress varchar(100),
+    city varchar(100),
+    pc char(6),
+    creditAmt decimal(6, 2),
+    primary key (emailAddress));
+
+create table foodOrder(
+	orderID integer,
+	totalPrice decimal(6,2),
+	tip decimal(6, 2),
+	orderDate date not null,
+	primary key (orderID));
+
+create table food (
+	name varchar(100),
+	primary key (name));
+
+create table restaurant(
+	name varchar(100),
+	streetAddress varchar(100),
+	city varchar(100),
+	pc char(6),
+	url varchar(200),
+	primary key (name));
+
+create table employee(
+	ID integer,
+	firstName varchar(100),
+	lastName varchar(100),
+	emailAddress varchar(100),
+    restaurantName varchar(100),
+	primary key (ID),
+    foreign key(restaurantName) references restaurant(name));
+
+create table manager(
+	empid integer primary key,
+	foreign key (empid) references employee(ID) on delete cascade);
+
+create table serverStaff(
+	empid integer primary key,
+	foreign key (empid) references employee(ID) on delete cascade);
+
+create table chef(
+	empid integer primary key,
+	foreign key (empid) references employee(ID) on delete cascade);
+
+create table deliveryPerson(
+	empid integer primary key,
+	foreign key (empid) references employee(ID) on delete cascade);
+
+create table payment(
+	customerEmail varchar(100),
+	date date not null,
+	paymentAmount decimal(6,2) not null,
+	primary key (customerEmail, date),
+	foreign key (customerEmail) references customerAccount(emailAddress) on delete cascade);
+
+create table shift(
+	empID integer not null,
+	day varchar(15) not null,
+	startTime time not null,
+	endTime time not null,
+	primary key (empID, day),
+	foreign key (empID) references employee(ID) on delete cascade);
+
+create table chefCredentials (
+	empID integer not null,
+	cred varchar(30),
+	primary key (empID, cred),
+	foreign key (empID) references employee(ID) on delete cascade);
+
+create table orderPlacement(
+	customerEmail varchar(100) not null,
+	orderID integer not null,
+	restaurant varchar(100) not null,
+	orderTime time,
+	primary key (customerEmail, orderID, restaurant),
+	foreign key (customerEmail) references customerAccount(emailAddress) on delete cascade,
+	foreign key (orderID) references foodOrder(orderID) on delete cascade,
+	foreign key (restaurant) references restaurant(name) on delete cascade);
+
+create table relatedTo(
+	customer varchar(100) not null,
+	employee integer not null,
+	relationship varchar(100),
+	primary key (customer, employee),
+	foreign key (customer) references customerAccount(emailAddress) on delete cascade,
+	foreign key (employee) references employee(ID) on delete cascade);
+
+create table menu(
+	restaurant varchar(100) not null,
+	food varchar(100) not null,
+	price decimal(6, 2),
+	primary key (restaurant, food),
+	foreign key (restaurant) references restaurant(name) on delete cascade,
+	foreign key (food) references food (name) on delete cascade);
+
+create table foodItemsinOrder(
+	orderID integer not null,
+	food varchar(100) not null,
+	primary key (orderID, food),
+	foreign key (orderID) references foodOrder(orderID) on delete cascade,
+	foreign key (food) references food(name) on delete cascade);
+
+create table delivery(
+	orderID integer not null,
+	deliveryPerson integer not null,
+	deliveryTime time,
+	primary key (orderID, deliveryPerson),
+	foreign key (orderID) references foodOrder(orderID) on delete cascade,
+	foreign key (deliveryPerson) references employee(id) on delete cascade);
+
+create table worksAt(
+	employeeID integer not null,
+	restaurant varchar(100) not null,
+	primary key (employeeID, restaurant),
+	foreign key (employeeID) references employee(ID) on delete cascade,
+	foreign key (restaurant) references restaurant(name) on delete cascade);
+
+insert into customerAccount values
+('wq@gmail.com', 'William', 'Quigley', '7058531293', '89 Todd St', 'Kingston', 'K7M 2B9', 40.0),
+('eb@gmail.com', 'Ethan', 'Brock', '7057381923', '12 Mary Ave', 'Kingston', 'K7M 3J5', 32.75),
+('ib@gmail.com', 'Isaac', 'Birch', '7057492309', '120 Clergy Ln', 'Kingston', 'K7M 8G9', 0.0),
+('mp@gmail.com', 'Mark', 'Plumber', '7058429201', '8 Mop St', 'Kingston', 'K7M JE0', 21.2);
+
+insert into foodOrder values
+(1234, 14.0, 2.0, '2022-04-05'),
+(4321, 15.0, 3.0, '2022-02-12'),
+(7890, 7.5, 4.0, '2022-01-22'),
+(0987, 7.5, 1.0, '2022-11-19');
+
+insert into food values
+('Hot Dog'),
+('Pizza'),
+('Burger');
+
+insert into restaurant values
+('Tommys', '377 Princess St', 'Kingston', 'K7L 1B9', 'https://www.tommyskingston.ca/'),
+('Wooden Heads', '192 Ontario St', 'Kingston', 'K7L 2Y8', 'https://woodenheads.com/');
+
+insert into employee values
+(123456789,'John','Smith',      'js@gmail.com','Wooden Heads'),
+(333445555,'Franklin','Wong',   'fw@gmail.com','Wooden Heads'),
+(999887777,'Alicia','Zelaya',   'az@gmail.com','Wooden Heads'),
+(987654321,'Jennifer','Wallace','jw@gmail.com','Wooden Heads'),
+(666884444,'Ramesh','Narayan',  'rn@gmail.com','Tommys'),
+(453453453,'Joyce','English',   'je@gmail.com','Tommys'),
+(987987987,'Ahmad','Jabbar',    'aj@gmail.com','Tommys'),
+(888665555,'James','Borg',      'jb@gmail.com','Tommys');
+
+insert into manager values
+(123456789),
+(666884444);
+
+insert into serverStaff values
+(333445555),
+(453453453);
+
+insert into chef values
+(999887777),
+(987987987);
+
+insert into deliveryPerson values
+(987654321),
+(888665555);
+
+insert into payment values
+('wq@gmail.com', '2022-04-05', 18.0),
+('eb@gmail.com', '2022-02-12', 15.0),
+('ib@gmail.com', '2022-01-22', 4.0),
+('mp@gmail.com', '2022-11-19', 1.0);
+
+insert into shift values
+(123456789, 'Monday', '08:00:00', '20:00:00'),
+(333445555, 'Tuesday', '09:00:00', '11:00:00'), 
+(999887777, 'Friday', '11:30:00', '21:30:00'),
+(987654321, 'Sunday', '12:00:00', '18:45:00'),
+(666884444, 'Monday', '16:00:00', '18:00:00'),
+(453453453, 'Sundayday', '05:00:00', '20:00:00'),
+(987987987, 'Saturday', '08:00:00', '12:00:00'),
+(888665555, 'Monday', '09:30:00', '12:30:00');
+
+insert into chefCredentials values
+(999887777, 'First Aid'),
+(987987987, 'Hamburger Training');
+
+insert into orderPlacement values
+('wq@gmail.com', 1234, 'Wooden Heads', '13:00:00'),
+('eb@gmail.com', 4321, 'Wooden Heads', '17:00:00'),
+('ib@gmail.com', 7890, 'Tommys', '12:00:00'),
+('mp@gmail.com', 0987, 'Tommys', '11:00:00');
+
+insert into relatedTo values
+('wq@gmail.com', 888665555, 'Brother In Law');
+
+insert into menu values
+('Wooden Heads', 'Burger', 8.0),
+('Wooden Heads', 'Pizza', 4.0),
+('Tommys', 'Pizza', 3.5),
+('Tommys', 'Hot Dog', 3);
+
+insert into foodItemsinOrder values
+(1234, 'Pizza'),
+(1234, 'Burger'),
+(4321, 'Burger'),
+(4321, 'Pizza'),
+(7890, 'Hot Dog'),
+(0987, 'Pizza'),
+(0987, 'Hot Dog');
+
+insert into delivery values
+(1234, 987654321, '12:21:00'),
+(4321, 987654321, '16:34:00'),
+(7890, 888665555, '11:01:00'),
+(0987, 888665555, '10:40:00');
+
+insert into worksAt values
+(123456789,'Wooden Heads'),
+(333445555,'Wooden Heads'),
+(999887777,'Wooden Heads'),
+(987654321,'Wooden Heads'),
+(666884444,'Tommys'),
+(453453453,'Tommys'),
+(987987987,'Tommys'),
+(888665555,'Tommys');
