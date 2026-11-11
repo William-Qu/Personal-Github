@@ -1,0 +1,10 @@
+model,total_equity
+Main_HistGrad,100000.0
+Main_MultLSTM,100000.0
+Main_MultVar,100000.0
+Main_Pct,100000.0
+Main_Raw,100000.0
+Main_SglPred,100000.0
+Main_LogReg,100000.0
+VersionVideo,100000.0
+Trad,100000.0
